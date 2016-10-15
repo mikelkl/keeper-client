@@ -4,16 +4,29 @@ import Vue from 'vue'
 import App from './App'
 
 import VueRouter from 'vue-router'
+import Vuex from 'vuex'
 
 // 0. 如果使用模块化机制编程， 要调用 Vue.use(VueRouter)
 Vue.use(VueRouter)
+Vue.use(Vuex)
 
 // 1. 定义（路由）组件。
 // 可以从其他文件 import 进来
-import Aid from './components/Aid'
-import ECG from './components/ECG'
-import TreatmentRecord from './components/TreatmentRecord'
-import UserInfo from './components/UserInfo'
+import Aid from './components/features/Aid'
+import ECG from './components/features/ECG'
+import TreatmentRecord from './components/features/TreatmentRecord'
+import UserInfo from './components/features/UserInfo'
+
+const store = new Vuex.Store({
+  state: {
+    isLogin: false,
+    user: {}
+  },
+  mutations: {
+    login (state) {
+    }
+  }
+})
 
 // 2. 定义路由
 // 每个路由应该映射一个组件。 其中"component" 可以是
@@ -46,5 +59,6 @@ const router = new VueRouter({
 
 new Vue({
   router,
+  store,
   render: h => h(App)
 }).$mount('#app')
