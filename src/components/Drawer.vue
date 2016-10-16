@@ -50,13 +50,13 @@
           <div class="mdl-layout-spacer"></div>
         </nav>
       </div>
+      <main class="mdl-layout__content mdl-color--grey-100">
+        <div class="mdl-grid demo-content">
+          <!-- 下一级视图 -->
+          <router-view></router-view>
+        </div>
+      </main>
     </div>
-    <main class="mdl-layout__content mdl-color--grey-100">
-      <div class="mdl-grid demo-content">
-        <!-- 下一级视图 -->
-        <router-view></router-view>
-      </div>
-    </main>
   </div>
 </template>
 
@@ -81,19 +81,14 @@
 </script>
 
 <style scoped>
-  label.mdl-button.mdl-js-button.mdl-button--icon {
-    top: -20px
-  }
 
-  img.icon{
-     width: 24px;
-     height: 24px;
-     margin-right: 32px;
-  }
+label.mdl-button.mdl-js-button.mdl-button--icon {
+  top: -20px
+}
 
-
-  main.mdl-layout__content.mdl-color--grey-100{
-    top: 64px;
-    margin-left: 240px;
-  }
+img.icon{
+   width: 24px;
+   height: 24px;
+   margin-right: 32px;
+}
 </style>
