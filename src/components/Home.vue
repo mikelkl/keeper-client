@@ -1,12 +1,12 @@
 <template>
   <div class="demo-layout mdl-layout mdl-js-layout mdl-color--grey-100">
     <div class="demo-ribbon">
-      <header>
-        <img src="../assets/images/logo.png" alt="">
-        <button class="mdl-button mdl-js-button mdl-js-ripple-effect">了解更多<i class="material-icons" role="presentation">arrow_drop_down</i></button>
+      <header class="mdl-grid">
+        <img src="../assets/images/logo.png" class="mdl-cell--2-offset mdl-cell--1-offset-tablet">
+        <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-cell--6-offset mdl-cell--4-offset-tablet mdl-cell--1-offset-phone">了解更多<i class="material-icons" role="presentation">arrow_drop_down</i></button>
         <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-color--black">联系我们</button>
       </header>
-      <div class="intro">
+      <div class="intro mdl-cell--8-col mdl-cell--6-col-tablet mdl-cell--2-offset mdl-cell--1-offset-tablet">
         <h1>Keeper - 心电医疗云平台</h1>
         <h4>完整的生态体系</h4>
         <h6>Windows&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;&nbsp;&nbsp;&nbsp;Android&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;&nbsp;&nbsp;&nbsp;Web</h6>
@@ -27,29 +27,28 @@
     <main class="demo-main mdl-layout__content">
       <div class="demo-container mdl-grid">
         <div class="demo-content mdl-color--white mdl-shadow--2dp content mdl-color-text--grey-800 mdl-cell mdl-cell--10-col center">
-          <div class="mdl-card mdl-shadow--8dp mdl-cell--10-col center">
+          <div class="mdl-card mdl-shadow--8dp mdl-cell--10-col mdl-cell--7-col-tablet center">
             <div class="mdl-card__title mdl-color-text--indigo-400">
               <h3 style="border-bottom: solid 2px;">请先登陆</h3>
             </div>
             <form action="#">
               <div class="mdl-card__supporting-text">
                 <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                  <input class="mdl-textfield__input" type="text" id="account">
+                  <input class="mdl-textfield__input" type="text" id="account" v-model="user.account">
                   <label class="mdl-textfield__label" for="account">用户名</label>
                 </div><br>
                 <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                  <input class="mdl-textfield__input" type="text" id="pass">
+                  <input class="mdl-textfield__input" type="password" id="pass" v-model="user.pass">
                   <label class="mdl-textfield__label" for="pass">密码</label>
                 </div>
               </div>
               <div class="mdl-card__actions">
-              <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-color--indigo-400 mdl-color-text--white big-btn">登陆</button>
+              <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-color--indigo-400 mdl-color-text--white big-btn" @click="login()">登陆</button>
               </div>
             </form>
           </div>
-          <img class="img-above" src="../assets/images/doctor.png" alt="" />
-          <!-- <h3 class="mdl-color-text--indigo-400" style="text-align: center;">How to install MDL</h3> -->
-            <h6 style="margin-top: 15vh;">想要加入我们？</h6>
+          <img class="img-above mdl-cell--1-offset mdl-cell--1-offset-tablet" src="../assets/images/doctor.png" alt="" />
+          <h6 style="margin-top: 15vh;">想要加入我们？</h6>
           <div style="margin-top: 5vh;">
             <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-color--black mdl-color-text--white big-btn" style="margin-right:8px;">了解更多</button>
             <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-color--indigo-400 mdl-color-text--white big-btn">联系我们</button>
@@ -98,6 +97,32 @@
   </div>
 </template>
 
+<script>
+  export default {
+    data () {
+      return {
+        user: {}
+      }
+    },
+    methods: {
+      login () {
+        this.$http.post('http://www.163.com', {
+          account: this.user.account,
+          pass: this.user.pass
+        }).then(function (ret) {
+          console.log(ret)
+          let user = this.user
+          console.log(user)
+          // this.$dispatch('timeUpdate', timeEntry)
+          this.$store.commit('login', user)
+          this.user = {}
+        })
+      }
+    }
+  }
+</script>
+
+
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
@@ -112,7 +137,7 @@
 }
 
 header {
-  padding-left: 15%;
+  width: 100%;
   padding-top: 20px;
   overflow: visible;
 }
@@ -125,22 +150,19 @@ header img {
 header button {
   color: white;
   font-weight: 400;
-  left: 70%;
 }
 
 .intro {
   color: white;
-  padding-left: 15%;
-  width: 70%;
-  padding-top: 40px;
+  padding-top: 5vh;
 }
 
 .intro h1{
-  line-height: 50px;
+  line-height: 6vh;
 }
 
 .icons {
-  line-height: 120px;
+  line-height: 12vh;
 }
 .intro .icons .icon{
    width: 24px;
@@ -155,6 +177,20 @@ header button {
       -ms-flex-negative: 0;
           flex-shrink: 0;
 }
+
+@media screen and (max-height: 600px) {
+  .demo-main {
+    margin-top: 5vh;
+    transition: 1s;
+  }
+}
+
+@media screen and (min-height: 600px) {
+  .demo-main {
+    transition: 1s;
+  }
+}
+
 
 .demo-container {
   max-width: 1600px;
@@ -186,8 +222,7 @@ header button {
 
 .img-above {
   position: absolute;
-  top: 90px;
-  right: 200px;
+  top: 15vh;
   z-index: 1;
   height: 400px;
 }
@@ -201,7 +236,7 @@ header button {
 }
 
 .demo-content .mdl-card {
-  padding-left: 50px;
+  padding-left: 75px;
 }
 
 .more .mdl-card {
