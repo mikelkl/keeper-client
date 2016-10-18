@@ -14,7 +14,7 @@ html, body {
   bottom: 19px;
 }
 .demo-layout .mdl-layout__header .mdl-layout__drawer-button {
-  color: rgba(0, 0, 0, 0.54);
+  color: white;
 }
 .mdl-layout__drawer .avatar {
   margin-bottom: 16px;
@@ -84,9 +84,12 @@ html, body {
   color: rgba(255, 255, 255, 0.56);
   font-weight: 500;
 }
-.demo-layout .demo-navigation .mdl-navigation__link:hover {
+.demo-layout .demo-navigation {
   background-color: #00BCD4;
   color: #37474F;
+}
+.mdl-navigation__link:hover {
+  background-color: #263238 !important;
 }
 .demo-navigation .mdl-navigation__link .material-icons {
   font-size: 24px;
@@ -96,4 +99,70 @@ html, body {
 
 .demo-content {
   max-width: 1080px;
+}
+
+.cards {
+  -webkit-align-items: flex-start;
+      -ms-flex-align: start;
+              -ms-grid-row-align: flex-start;
+          align-items: flex-start;
+  -webkit-align-content: flex-start;
+      -ms-flex-line-pack: start;
+          align-content: flex-start;
+}
+.cards .separator {
+  height: 32px;
+}
+.cards .mdl-card__title.mdl-card__title {
+  color: white;
+  font-size: 24px;
+  font-weight: 400;
+}
+.cards ul {
+  padding: 0;
+}
+.cards h3 {
+  font-size: 1em;
+}
+.updates .mdl-card__title {
+  min-height: 200px;
+  background-image: url('images/dog.png');
+  background-position: 90% 100%;
+  background-repeat: no-repeat;
+}
+.cards .mdl-card__actions a {
+  color: #00BCD4;
+  text-decoration: none;
+}
+
+.options h3 {
+  margin: 0;
+}
+.options .mdl-checkbox__box-outline {
+  border-color: rgba(255, 255, 255, 0.89);
+}
+.options ul {
+  margin: 0;
+  list-style-type: none;
+}
+.options li {
+  margin: 4px 0;
+}
+.options .material-icons {
+  color: rgba(255, 255, 255, 0.89);
+}
+.options .mdl-card__actions {
+  height: 64px;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  box-sizing: border-box;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.keeper-title {
+  padding-left: 15px;
+  border-left: 5px solid #00897b;
 }
