@@ -182,8 +182,17 @@ function loadScript () {
 }
 
 export default {
-  beforeMount: loadScript,
-  mounted: initialize
+  // beforeMount: loadScript,
+  // mounted: initialize
+  beforeRouteEnter (to, from, next) {
+    // 在渲染该组件的对应路由被 confirm 前调用
+    // 不！能！获取组件实例 `this`
+    // 因为当钩子执行前，组件实例还没被创建
+    next(() => {
+      loadScript()
+      initialize()
+    })
+  }
 }
 </script>
 
@@ -207,5 +216,59 @@ export default {
   padding-top: 10%;
   padding-bottom: 10%;
   border-bottom: 1px solid rgba(0,0,0,.1);
+}
+.cards {
+  -webkit-align-items: flex-start;
+      -ms-flex-align: start;
+              -ms-grid-row-align: flex-start;
+          align-items: flex-start;
+  -webkit-align-content: flex-start;
+      -ms-flex-line-pack: start;
+          align-content: flex-start;
+}
+.cards .separator {
+  height: 32px;
+}
+.cards .mdl-card__title.mdl-card__title {
+  color: white;
+  font-size: 24px;
+  font-weight: 400;
+}
+.cards ul {
+  padding: 0;
+}
+.cards h3 {
+  font-size: 1em;
+}
+.cards .mdl-card__actions a {
+  color: #00BCD4;
+  text-decoration: none;
+}
+
+.options h3 {
+  margin: 0;
+}
+.options .mdl-checkbox__box-outline {
+  border-color: rgba(255, 255, 255, 0.89);
+}
+.options ul {
+  margin: 0;
+  list-style-type: none;
+}
+.options li {
+  margin: 4px 0;
+}
+.options .material-icons {
+  color: rgba(255, 255, 255, 0.89);
+}
+.options .mdl-card__actions {
+  height: 64px;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  box-sizing: border-box;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 </style>
