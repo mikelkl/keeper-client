@@ -5,28 +5,38 @@ import App from './App'
 
 import VueRouter from 'vue-router'
 import Vuex from 'vuex'
+import VueResource from 'vue-resource'
 
 // 0. 如果使用模块化机制编程， 要调用 Vue.use(VueRouter)
 Vue.use(VueRouter)
 Vue.use(Vuex)
-
-// 1. 定义（路由）组件。
-// 可以从其他文件 import 进来
-import Aid from './components/features/Aid'
-import ECG from './components/features/ECG'
-import TreatmentRecord from './components/features/TreatmentRecord'
-import UserInfo from './components/features/UserInfo'
+Vue.use(VueResource)
 
 const store = new Vuex.Store({
   state: {
-    isLogin: false,
+    isLogin: true,
     user: {}
   },
   mutations: {
-    login (state) {
+    login (state, user) {
+      state.isLogin = true
+      state.user = user
     }
   }
 })
+
+// import ECG from './components/features/ECG'
+// import Aid from './components/features/Aid'
+// import TreatmentRecord from './components/features/TreatmentRecord'
+// import UserInfo from './components/features/UserInfo'
+
+// 1. 定义（路由）组件。
+// 可以从其他文件 import 进来
+// 路由懒加载
+const Aid = resolve => require(['./components/features/Aid'], resolve)
+const ECG = resolve => require(['./components/features/ECG'], resolve)
+const TreatmentRecord = resolve => require(['./components/features/TreatmentRecord'], resolve)
+const UserInfo = resolve => require(['./components/features/UserInfo'], resolve)
 
 // 2. 定义路由
 // 每个路由应该映射一个组件。 其中"component" 可以是
