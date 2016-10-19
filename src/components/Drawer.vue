@@ -1,7 +1,28 @@
 <template>
   <div>
     <div class="demo-layout mdl-layout mdl-js-layout mdl-layout--fixed-drawer mdl-layout--fixed-header">
-      <header class="demo-header mdl-layout__header mdl-layout__header--waterfall mdl-color--teal-600 mdl-color-text--grey-600">
+      <header class="demo-header mdl-layout__header mdl-layout__header--waterfall mdl-layout__header--waterfall-hide-top">
+        <div class="mdl-layout__header-row mdl-color--grey-100 mdl-color-text--grey-600">
+          <img src="../assets/images/logo2.png" width="30" height="30" style="margin-right: 5px;">
+          <!-- <span class="mdl-layout-title header-font">Keeper</span> -->
+          <span class="mdl-layout-title">Keeper</span>
+          <div class="mdl-layout-spacer"></div>
+          <div class="mdl-textfield mdl-js-textfield mdl-textfield--expandable">
+            <label class="mdl-button mdl-js-button mdl-button--icon" for="search">
+              <i class="material-icons">search</i>
+            </label>
+            <div class="mdl-textfield__expandable-holder">
+              <input class="mdl-textfield__input" type="text" id="search">
+              <label class="mdl-textfield__label" for="search">Enter your query...</label>
+            </div>
+          </div>
+        </div>
+        <div class="mdl-layout__header-row">
+        <!-- <div class="mdl-layout__header-row mdl-color--teal-600"> -->
+          <span class="mdl-layout-title header-font">{{ selectedTitle }}</span>
+        </div>
+      </header>
+      <!-- <header class="demo-header mdl-layout__header mdl-layout__header--waterfall mdl-color--teal-600 mdl-color-text--grey-600">
         <div class="mdl-layout__header-row">
           <img src="../assets/images/logo.png" width="30" height="30">
           <span class="mdl-layout-title header-font">Keeper</span>
@@ -19,7 +40,7 @@
         <div class="mdl-layout__header-row">
           <span class="header-title">{{ selectedTitle }}</span>
         </div>
-      </header>
+      </header> -->
       <div v-on:click="hide"  class="demo-drawer mdl-layout__drawer mdl-color--blue-grey-900 mdl-color-text--blue-grey-50">
         <header class="demo-drawer-header">
           <img src="../assets/images/user.jpg" class="demo-avatar">
@@ -39,7 +60,7 @@
         </header>
         <nav v-on:click="activate" class="demo-navigation mdl-navigation mdl-color--blue-grey-800">
           <!-- <router-link to="/home" class="mdl-navigation__link"><img class="icon" src="../assets/images/icons/home.svg">首页</router-link> -->
-          <router-link to="/treatment-record" class="mdl-navigation__link" v-bind:class="{ display: loadingDisplay }"><img class="icon" src="../assets/images/icons/record.svg">就诊记录</router-link>
+          <router-link to="/treatment-record" class="mdl-navigation__link"><img class="icon" src="../assets/images/icons/record.svg">就诊记录</router-link>
           <router-link to="/ecg" class="mdl-navigation__link"><img class="icon" src="../assets/images/icons/ecg.svg">心电图记录</router-link>
           <router-link to="/aid" class="mdl-navigation__link"><img class="icon" src="../assets/images/icons/aid.svg">一键急救</router-link>
           <router-link to="/user-info" class="mdl-navigation__link"><img class="icon" src="../assets/images/icons/user.svg">个人信息</router-link>
@@ -47,12 +68,13 @@
         </nav>
       </div>
       <main class="mdl-layout__content mdl-color--grey-100">
-      <div class="mdl-spinner mdl-js-spinner is-active loading" v-bind:style="{ display: loadingDisplay }"></div>
+        <div class="mdl-spinner mdl-js-spinner is-active loading" v-show="$store.state.loading"></div>
+      <!-- <div class="mdl-spinner mdl-js-spinner is-active loading" v-bind:style="{ display: loadingDisplay }"></div> -->
       <!-- <div class="mdl-spinner mdl-js-spinner is-active loading"></div> -->
       <!-- <div>{{ loadingDisplay }}</div> -->
         <!-- <div class="mdl-grid demo-content"> -->
           <!-- 下一级视图 -->
-          <router-view></router-view>
+        <router-view></router-view>
         <!-- </div> -->
       </main>
     </div>
@@ -65,7 +87,6 @@
       return {
         lastElement: null,
         selectedTitle: '',
-        loadingDisplay: 'none',
         activate: false
       }
     },
@@ -80,15 +101,6 @@
             btn.click()
           }
           this.selectedTitle = target.innerText
-
-          this.loadingDisplay = 'block'
-
-          // 因为setTimeout中的this指向window，所以得耍个trick，保存当前对象this
-          let that = this
-
-          setTimeout(function () {
-            that.loadingDisplay = 'none'
-          }, 1000)
         } else {
           return
         }
@@ -99,9 +111,7 @@
           if (this.lastElement !== null) {
             this.lastElement.classList.remove('activate')
           }
-          // this.lastElement.setAttribute('style', '')
           this.lastElement = event.target
-          // event.target.style = 'background-color: #00BCD4 !important;color: #37474F;'
           event.target.classList.add('activate')
         }
       }
@@ -110,22 +120,13 @@
 </script>
 
 <style scoped>
-.header-title {
+/*.header-title {
   font-size:56px;
   color:white;
   margin:0 auto;
-}
+}*/
 .header-font {
   color: white;
-}
-
-.loading {
-  /*display:none;*/
-  width: 40px;
-  height: 40px;
-  background-color: white;
-  border-radius: 20px;
-  margin: 50px auto;
 }
 
 .activate {
@@ -141,5 +142,14 @@ img.icon{
    width: 24px;
    height: 24px;
    margin-right: 32px;
+}
+
+.loading {
+  display:block;
+  width: 40px;
+  height: 40px;
+  background-color: white;
+  border-radius: 20px;
+  margin: 50px auto;
 }
 </style>

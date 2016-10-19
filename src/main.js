@@ -15,12 +15,16 @@ Vue.use(VueResource)
 const store = new Vuex.Store({
   state: {
     isLogin: true,
+    loading: false,
     user: {}
   },
   mutations: {
     login (state, user) {
       state.isLogin = true
       state.user = user
+    },
+    setLoading (state, loading) {
+      state.loading = loading
     }
   }
 })

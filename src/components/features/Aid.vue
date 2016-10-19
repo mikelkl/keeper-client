@@ -6,7 +6,7 @@
         <h2 class="mdl-card__title-text keeper-title">地图显示</h2>
       </div>
       <div class="mdl-card__actions mdl-card--border">
-        <div id="map" style="width:100%;height:70vh"></div>
+        <div id="map" class="show-chart"></div>
       </div>
     </div>
       <!-- <div class="mdl-card mdl-shadow--2dp mdl-cell mdl-cell--4-col mdl-cell--4-col-tablet">
@@ -41,7 +41,7 @@
       <div class="cards mdl-cell mdl-cell--4-col mdl-cell--8-col-tablet mdl-grid mdl-grid--no-spacing">
         <div class="mdl-card mdl-shadow--2dp mdl-cell mdl-cell--4-col mdl-cell--4-col-tablet mdl-cell--12-col-desktop">
           <div class="mdl-card__title">
-            <h2 class="mdl-card__title-text keeper-title mdl-color-text--black">病人资料</h2>
+            <h2 class="mdl-card__title-text keeper-title">病人资料</h2>
           </div>
           <!-- <div class="mdl-card__supporting-text mdl-color-text--grey-600 mdl-card--border"> -->
           <div class="mdl-card__actions mdl-card--border mdl-color-text--grey-600">
@@ -109,7 +109,7 @@
       </div>
       <div class="mdl-card mdl-shadow--2dp mdl-cell mdl-cell--8-col mdl-cell--8-col-tablet">
         <div class="mdl-card__title">
-          <h2 class="mdl-card__title-text keeper-title mdl-color-text--black">详细信息</h2>
+          <h2 class="mdl-card__title-text keeper-title">详细信息</h2>
         </div>
         <div class="mdl-card__actions mdl-card--border bottom-border mdl-grid">
           <div class="mdl-cell--6-col text-center">
@@ -182,21 +182,31 @@ function loadScript () {
 }
 
 export default {
-  // beforeMount: loadScript,
-  // mounted: initialize
   beforeRouteEnter (to, from, next) {
     // 在渲染该组件的对应路由被 confirm 前调用
     // 不！能！获取组件实例 `this`
     // 因为当钩子执行前，组件实例还没被创建
-    next(() => {
+    next(vm => {
+      vm.$store.commit('setLoading', true)
       loadScript()
       initialize()
+      setTimeout(function () {
+        vm.$store.commit('setLoading', false)
+      }, 1000)
     })
+  },
+  created () {
+      // 组件创建完后获取数据，
+      // 此时 data 已经被 observed 了
+    let headerRow = document.querySelectorAll('.mdl-layout__header-row')[1]
+    // headerRow.classList.add('mdl-color--teal-600')
+    headerRow.className = 'mdl-layout__header-row mdl-color--teal-600'
+    console.log(headerRow)
   }
 }
 </script>
 
-<style>
+<style scoped>
 .aid-avatar {
   width: 50px;
   height: 50px;
@@ -217,58 +227,10 @@ export default {
   padding-bottom: 10%;
   border-bottom: 1px solid rgba(0,0,0,.1);
 }
-.cards {
-  -webkit-align-items: flex-start;
-      -ms-flex-align: start;
-              -ms-grid-row-align: flex-start;
-          align-items: flex-start;
-  -webkit-align-content: flex-start;
-      -ms-flex-line-pack: start;
-          align-content: flex-start;
-}
-.cards .separator {
-  height: 32px;
-}
-.cards .mdl-card__title.mdl-card__title {
-  color: white;
-  font-size: 24px;
-  font-weight: 400;
-}
-.cards ul {
-  padding: 0;
-}
-.cards h3 {
-  font-size: 1em;
-}
-.cards .mdl-card__actions a {
-  color: #00BCD4;
-  text-decoration: none;
-}
-
-.options h3 {
-  margin: 0;
-}
-.options .mdl-checkbox__box-outline {
-  border-color: rgba(255, 255, 255, 0.89);
-}
-.options ul {
-  margin: 0;
-  list-style-type: none;
-}
-.options li {
-  margin: 4px 0;
-}
-.options .material-icons {
-  color: rgba(255, 255, 255, 0.89);
-}
-.options .mdl-card__actions {
-  height: 64px;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  box-sizing: border-box;
-  -webkit-align-items: center;
-      -ms-flex-align: center;
-          align-items: center;
+.keeper-title {
+  padding-left: 15px;
+  border-left: 5px solid #00897B;
+  color: #00897B;
+  font-weight: 500;
 }
 </style>
