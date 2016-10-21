@@ -73,8 +73,10 @@
       <!-- <div class="mdl-spinner mdl-js-spinner is-active loading"></div> -->
       <!-- <div>{{ loadingDisplay }}</div> -->
         <!-- <div class="mdl-grid demo-content"> -->
-          <!-- 下一级视图 -->
-        <router-view></router-view>
+        <!-- 下一级视图 -->
+        <transition name="component-fade" mode="out-in">
+          <router-view></router-view>
+        </transition>
         <!-- </div> -->
       </main>
     </div>
@@ -119,6 +121,15 @@
 </script>
 
 <style scoped>
+/* Enter and leave animations can use different */
+/* durations and timing functions.              */
+.component-fade-enter-active, .component-fade-leave-active {
+  transition: opacity .3s ease;
+}
+.component-fade-enter, .component-fade-leave-active {
+  opacity: 0;
+}
+
 /*.header-title {
   font-size:56px;
   color:white;
