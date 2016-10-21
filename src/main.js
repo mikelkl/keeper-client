@@ -16,6 +16,7 @@ const store = new Vuex.Store({
   state: {
     isLogin: true,
     loading: false,
+    selectedTitle: '',
     user: {}
   },
   mutations: {
@@ -25,6 +26,9 @@ const store = new Vuex.Store({
     },
     setLoading (state, loading) {
       state.loading = loading
+    },
+    setSelectedTitle (state, selectedTitle) {
+      state.selectedTitle = selectedTitle
     }
   }
 })
@@ -49,15 +53,19 @@ const UserInfo = resolve => require(['./components/features/UserInfo'], resolve)
 // 我们晚点在讨论嵌套路由。
 const routes = [{
   path: '/aid',
+  name: '一键急救',
   component: Aid
 }, {
   path: '/ecg',
+  name: '心电图记录',
   component: ECG
 }, {
   path: '/treatment-record',
+  name: '就诊记录',
   component: TreatmentRecord
 }, {
   path: '/user-info',
+  name: '个人信息',
   component: UserInfo
 }]
 
@@ -65,6 +73,10 @@ const routes = [{
 // 你 还可以传别的配置参数, 不过先这么简单着吧。
 const router = new VueRouter({
   routes // （缩写）相当于 routes: routes
+})
+
+router.afterEach(route => {
+  store.commit('setSelectedTitle', route.name)
 })
 
 // 4. 创建和挂载根实例。

@@ -19,7 +19,7 @@
         </div>
         <div class="mdl-layout__header-row">
         <!-- <div class="mdl-layout__header-row mdl-color--teal-600"> -->
-          <span class="mdl-layout-title header-font">{{ selectedTitle }}</span>
+          <span class="mdl-layout-title header-font">{{ $store.state.selectedTitle }}</span>
         </div>
       </header>
       <!-- <header class="demo-header mdl-layout__header mdl-layout__header--waterfall mdl-color--teal-600 mdl-color-text--grey-600">
@@ -86,7 +86,6 @@
     data () {
       return {
         lastElement: null,
-        selectedTitle: '',
         activate: false
       }
     },
@@ -100,7 +99,7 @@
             // console.log(target.tagName)
             btn.click()
           }
-          this.selectedTitle = target.innerText
+          // this.selectedTitle = target.innerText
         } else {
           return
         }
