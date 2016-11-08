@@ -1,37 +1,11 @@
 <template>
-  <!-- <div id="scroll" class="layout mdl-layout mdl-js-layout mdl-color--grey-100"> -->
   <div id="scroll" @scroll="scrollHandler" class="layout mdl-layout mdl-js-layout mdl-color--grey-100">
-    <modal v-if="showModal" @close="showModal = false">
-      <h3 slot="header">登陆</h3>
-      <form action="#" slot="body">
-        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-          <input class="mdl-textfield__input" type="text" id="account" v-model="user.account">
-          <label class="mdl-textfield__label" for="account">用户名</label>
-        </div><br>
-        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-          <input class="mdl-textfield__input" type="password" id="pass" v-model="user.pass">
-          <label class="mdl-textfield__label" for="pass">密码</label>
-        </div>
-        <!-- <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" v-bind:class="{'is-upgraded': showText1, 'is-focused': showText1}">
-          <input @input="showText1 = true" @focus="showText1 = true" @blur="showText1 = showText1 && user.account" class="mdl-textfield__input" type="text" id="account" v-model="user.account">
-          <label class="mdl-textfield__label" for="account">用户名</label>
-        </div><br>
-        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" v-bind:class="{'is-upgraded': showText2, 'is-focused': showText2}">
-          <input @input="showText2 = true" @focus="showText2 = true" @blur="showText2 = showText2 && user.pass" class="mdl-textfield__input" type="password" id="pass" v-model="user.pass">
-          <label class="mdl-textfield__label" for="pass">密码</label>
-        </div> -->
-        <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" @click.prevent="login()">登陆</button>
-        <input type="reset" class="mdl-button mdl-js-button mdl-button--raised mdl-button--accent" value="取消">
-      </form>
-      <div slot="footer">
-      </div>
-    </modal>
     <div class="ribbon">
       <header class="mdl-grid">
         <img src="../assets/images/logo.png" class="mdl-cell--1-offset mdl-cell--1-offset-tablet">
         <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-cell--7-offset mdl-cell--3-offset-tablet mdl-cell--1-offset-phone">了解更多<i class="material-icons" role="presentation">arrow_drop_down</i></button>
-        <!-- <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-color--black mdl-color-text--white" id="show-modal" @click="login()">登陆</button> -->
-        <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-color--black mdl-color-text--white" id="show-modal" @click="showModal = true">登陆</button>
+        <router-link to="/login" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-color--black mdl-color-text--white">登陆</router-link>
+        <!-- <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-color--black mdl-color-text--white" id="show-modal" @click="showModal = true">登陆</button> -->
       </header>
       <div class="intro mdl-cell--6-col mdl-cell--1-offset horizon-anim">
         <h3 class="mdl-color-text--cyan-600">Keeper <br> 心电医疗云平台 <br> 设备通过蓝牙模块将采集数据输出</h3>
@@ -222,19 +196,10 @@
 </template>
 
 <script>
-  import Modal from './utils/Modal'
-
   export default {
-    components: {
-      'modal': Modal
-    },
     data () {
       return {
-        user: {},
-        showModal: false
-        // showModal: false,
-        // showText1: false,
-        // showText2: false
+        user: {}
       }
     },
     methods: {
@@ -248,7 +213,6 @@
           },
           callback: function () {
             that.$router.push('/treatment-record')
-            that.$store.commit('SET_LOADING', false)
           }
         })
       },

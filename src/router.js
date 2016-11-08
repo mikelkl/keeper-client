@@ -12,6 +12,8 @@ const ECG = resolve => require(['./components/main/ECG'], resolve)
 const TreatmentRecord = resolve => require(['./components/main/TreatmentRecord'], resolve)
 const UserInfo = resolve => require(['./components/main/UserInfo'], resolve)
 const Home = resolve => require(['./components/Home'], resolve)
+import Login from './components/login/Login'
+// const Login = resolve => require(['./components/login/Login'], resolve)
 // const Drawer = resolve => require(['./components/Drawer'], resolve)
 // const test1 = resolve => require(['./components/test1'], resolve)
 // const test2 = resolve => require(['./components/test2'], resolve)
@@ -71,6 +73,10 @@ const routes = [{
   path: '/ecg',
   name: '心电图记录',
   component: ECG
+}, {
+  path: '/login',
+  name: '登陆',
+  component: Login
 }, {
   path: '/home',
   name: 'home',
