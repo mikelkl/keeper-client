@@ -1,5 +1,5 @@
 <template>
-    <header v-show="$route.name !== 'home'" class="header mdl-layout__header mdl-layout__header--waterfall mdl-layout__header--waterfall-hide-top">
+    <header class="header mdl-layout__header mdl-layout__header--waterfall mdl-layout__header--waterfall-hide-top">
       <div class="mdl-layout__header-row mdl-color--grey-100 mdl-color-text--grey-600">
         <img src="../../assets/images/logo2.png" width="30" height="30" style="margin-right: 5px;">
         <span class="mdl-layout-title">Keeper</span>

@@ -1,5 +1,5 @@
 <template>
-  <div v-show="$route.name !== 'home'" v-on:click="hide"  class="drawer mdl-layout__drawer mdl-color--blue-grey-900 mdl-color-text--blue-grey-50">
+  <div v-on:click="hide" class="drawer mdl-layout__drawer mdl-color--blue-grey-900 mdl-color-text--blue-grey-50">
     <header class="drawer-header">
       <img src="../../assets/images/user.jpg" class="avatar">
       <div class="avatar-dropdown">

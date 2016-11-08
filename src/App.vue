@@ -1,8 +1,8 @@
 <template>
   <div id="app">
     <div class="layout mdl-layout mdl-js-layout mdl-layout--fixed-drawer mdl-layout--fixed-header">
-      <my-header></my-header>
-      <my-sidebar></my-sidebar>
+      <my-header v-show="$route.name !== 'home' && $route.path !== '/login'"></my-header>
+      <my-sidebar v-show="$route.name !== 'home' && $route.path !== '/login'"></my-sidebar>
       <main class="mdl-layout__content mdl-color--grey-100 my-main">
       <!-- <main v-if="$route.name !== 'home'" class="mdl-layout__content mdl-color--grey-100"> -->
         <div class="mdl-spinner mdl-js-spinner is-active loading" v-show="$store.state.common.loading"></div>
@@ -12,11 +12,6 @@
         </transition>
         <!-- </div> -->
       </main>
-      <!-- <div v-else>
-        <transition name="component-fade" mode="out-in">
-          <router-view></router-view>
-        </transition>
-      </div> -->
     </div>
   </div>
 </template>
