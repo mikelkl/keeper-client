@@ -4,11 +4,7 @@
       <my-header v-show="$route.name !== 'home' && $route.path !== '/login'"></my-header>
       <my-sidebar v-show="$route.name !== 'home' && $route.path !== '/login'"></my-sidebar>
       <main class="mdl-layout__content mdl-color--grey-100 my-main">
-        <transition name="spinner-move">
-          <div v-show="$store.state.common.loading">
-            <div class="mdl-spinner mdl-js-spinner is-active loading"></div>
-          </div>
-        </transition>
+        <my-loading></my-loading>
         <!-- 下一级视图 -->
         <transition name="component-fade" mode="out-in">
           <router-view></router-view>
@@ -22,10 +18,12 @@
   import mdl from 'material-design-lite/material.js'
   import Header from './components/common/Header'
   import Sidebar from './components/common/Sidebar'
+  import Loading from './components/utils/Loading'
 
   export default {
     components: {
       'my-header': Header,
+      'my-loading': Loading,
       'my-sidebar': Sidebar
     }
   }
@@ -34,42 +32,6 @@
 <style src="material-design-lite/material.css"></style>
 <style src="../static/css/styles.css"></style>
 <style scoped>
-.spinner-move-enter-active {
-  position: relative;
-  animation: move-in .5s;
-}
-.spinner-move-leave-active {
-  position: relative;
-  animation: move-out .5s;
-}
-@keyframes move-in {
-  0% {
-    /*margin-top: -50px;*/
-    top: -50px;
-  }
-  50% {
-    /*margin-top: 10px;*/
-    top: 10px;
-  }
-  100% {
-    /*margin-top: 0px;*/
-    top: 0px;
-  }
-}
-@keyframes move-out {
-  0% {
-    /*margin-top: 0px;*/
-    top: 0px;
-  }
-  50% {
-    /*margin-top: 10px;*/
-    top: 10px;
-  }
-  100% {
-    /*margin-top: -50px;*/
-    top: -50px;
-  }
-}
 .my-main {
   margin-left: 0px;
 }
@@ -80,14 +42,5 @@
 }
 .component-fade-enter, .component-fade-leave-active {
   opacity: 0;
-}
-
-.loading {
-  display:block;
-  width: 40px;
-  height: 40px;
-  background-color: white;
-  border-radius: 20px;
-  margin: 50px auto;
 }
 </style>
