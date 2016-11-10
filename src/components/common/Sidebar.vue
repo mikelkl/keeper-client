@@ -1,9 +1,11 @@
 <template>
   <div v-on:click="hide" class="drawer mdl-layout__drawer mdl-color--blue-grey-900 mdl-color-text--blue-grey-50">
     <header class="drawer-header">
-      <img src="../../assets/images/user.jpg" class="avatar">
+      <img v-if="$store.state.userInfo.avatar" v-bind:src="$store.state.userInfo.avatar" class="avatar">
+      <img v-else src="../../assets/images/user.jpg" class="avatar">
       <div class="avatar-dropdown">
-        <span>hello@example.com</span>
+        <span v-if="$store.state.userInfo.nickname">{{ $store.state.userInfo.nickname }}</span>
+        <span v-else>hello@example.com</span>
         <div class="mdl-layout-spacer"></div>
         <button id="accbtn" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
           <i class="material-icons" role="presentation">arrow_drop_down</i>

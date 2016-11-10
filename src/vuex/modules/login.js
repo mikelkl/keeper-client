@@ -1,15 +1,13 @@
-import * as types from '../mutation_types'
+import {
+  SET_LOGIN
+} from '../mutation_types'
 
 const state = {
-  isLogin: false,
-  loading: false
+  isLogin: false
 }
 
 const mutations = {
-  [types.SET_LOADING] (state, loading) {
-    state.loading = loading
-  },
-  [types.SET_LOGIN] (state, isLogin) {
+  [SET_LOGIN] (state, isLogin) {
     state.isLogin = isLogin
     storeLoginInfo(isLogin)
     console.log('login invoked: ' + isLogin)
@@ -26,7 +24,7 @@ const actions = {
   getCommonStore: ({ commit }) => {
     if (sessionStorage.getItem('Login')) {
       let isLogin = sessionStorage.getItem('BaseInfo')
-      commit(types.SET_LOGIN, isLogin)
+      commit(SET_LOGIN, isLogin)
     }
   }
 }

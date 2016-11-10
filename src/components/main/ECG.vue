@@ -1,19 +1,14 @@
 <template>
-  <!-- <drawer> -->
-    <!-- <div class="mdl-layout__header-row mdl-color--cyan-600" slot="bottom-header">
-      <span class="mdl-layout-title mdl-color-text--white">心电图记录</span>
-    </div> -->
-    <div class="mdl-grid content common-content">
-      <div class='mdl-card mdl-shadow--2dp mdl-cell mdl-cell--12-col'>
-        <div class="mdl-card__title">
-          <h2 class="mdl-card__title-text keeper-title">心电图测量数据</h2>
-        </div>
-        <div class="mdl-card__actions mdl-card--border">
-          <div id="container" class="show-chart"></div>
-        </div>
+  <div class="mdl-grid content common-content">
+    <div class='mdl-card mdl-shadow--2dp mdl-cell mdl-cell--12-col'>
+      <div class="mdl-card__title">
+        <h2 class="mdl-card__title-text keeper-title">心电图测量数据</h2>
+      </div>
+      <div class="mdl-card__actions mdl-card--border">
+        <div id="container" class="show-chart"></div>
       </div>
     </div>
-  <!-- </drawer> -->
+  </div>
 </template>
 
 <script>

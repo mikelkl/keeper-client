@@ -1,6 +1,6 @@
 <template>
   <transition name="spinner-move">
-    <div v-show="$store.state.common.loading">
+    <div v-show="$store.state.doc.loading">
       <div class="mdl-spinner mdl-js-spinner is-active loading"></div>
     </div>
   </transition>

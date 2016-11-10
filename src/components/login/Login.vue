@@ -50,10 +50,14 @@
             account: this.user.account,
             pass: this.user.pass
           },
-          callback: function () {
-            that.$router.push('/treatment-record')
+          callback: {
+            success: this.success,
+            fail: this.reset
           }
         })
+      },
+      success () {
+        this.$router.push('/treatment-record')
       },
       reset (event) {
         this.user = {}
