@@ -88,7 +88,6 @@ const actions = {
     Vue.http.post('http://localhost:5000/api/v1.0/login/', payload.data)
     .then(function (res) {
       let data = res.data
-      console.log(data)
       if (res.ok) {
         // data.accesstoken = token
         // delete data.success
@@ -96,14 +95,22 @@ const actions = {
         commit(types.SET_BASE_INFO, data)
         commit(types.SET_LOGIN, true)
         commit(types.SET_LOADING, false)
-        payload.callback()
-        // router.push({ path: '/treatment-record' })
+        payload.callback.success()
+        // payload.callback()
       } else {
         console.log(data.error_msg)
         // callback(setMsg(false, data.error_msg))
       }
     }).catch(err => {
       console.info(err)
+      commit(types.SET_LOADING, false)
+      commit(types.SET_TIP, {
+        message: err.statusText,
+        actionHandler: function (event) {},
+        timeout: 2000,
+        actionText: 'Undo'
+      })
+      payload.callback.fail()
       // let errBody = JSON.parse(err.body)
       // callback(setMsg(false, errBody.error_msg))
     })

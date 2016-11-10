@@ -9,6 +9,7 @@
         <transition name="component-fade" mode="out-in">
           <router-view></router-view>
         </transition>
+        <my-tip></my-tip>
       </main>
     </div>
   </div>
@@ -19,11 +20,13 @@
   import Header from './components/common/Header'
   import Sidebar from './components/common/Sidebar'
   import Loading from './components/utils/Loading'
+  import Tip from './components/utils/Tip'
 
   export default {
     components: {
       'my-header': Header,
       'my-loading': Loading,
+      'my-tip': Tip,
       'my-sidebar': Sidebar
     }
   }
