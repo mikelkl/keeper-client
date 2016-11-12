@@ -91,7 +91,7 @@ const actions = {
       console.info(err)
       commit(types.SET_LOADING, false)
       commit(types.SET_TIP, {
-        message: err.statusText,
+        message: err.statusText || 'Error!',
         actionHandler: function (event) {},
         timeout: 2000,
         actionText: 'Undo'
