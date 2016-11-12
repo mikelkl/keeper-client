@@ -47,17 +47,6 @@ const mutations = {
     } catch (err) {
       console.log(err)
     }
-  },
-  [types.SET_DETAIL] (state, data) {
-    try {
-      // state.score = data.score
-      // state.recentTopics = data.recent_topics
-      // state.recentReplies = data.recent_replies
-      // state.github = data.githubUsername || ''
-      // state.createAt = data.create_at
-    } catch (err) {
-      console.log(err)
-    }
   }
 }
 
@@ -65,9 +54,6 @@ let sessionStorage = window.sessionStorage
 
 let storeBaseInfo = (data) => {
   sessionStorage.setItem('BaseInfo', JSON.stringify(data))
-}
-let storeDetailInfo = (data) => {
-  sessionStorage.setItem('DetailInfo', JSON.stringify(data))
 }
 
 const actions = {

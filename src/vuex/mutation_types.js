@@ -1,6 +1,5 @@
 // user info
 export const SET_BASE_INFO = 'SET_BASE_INFO'
-export const SET_DETAIL = 'SET_DETAIL'
 
 // common
 export const SET_LOADING = 'SET_LOADING'

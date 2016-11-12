@@ -9,6 +9,7 @@
   export default {
     data () {
       return {
+        // 将Store.state绑定在data上
         data: this.$store.state
       }
     },

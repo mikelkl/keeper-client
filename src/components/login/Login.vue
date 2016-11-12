@@ -43,7 +43,6 @@
     },
     methods: {
       login () {
-        let that = this
         this.$store.commit('SET_LOADING', true)
         this.$store.dispatch('setBaseInfo', {
           data: {
