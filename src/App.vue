@@ -1,8 +1,8 @@
 <template>
   <div id="app">
     <div class="layout mdl-layout mdl-js-layout mdl-layout--fixed-drawer mdl-layout--fixed-header">
-      <my-header v-show="$route.name !== 'home' && $route.path !== '/login'"></my-header>
-      <my-sidebar v-show="$route.name !== 'home' && $route.path !== '/login'"></my-sidebar>
+      <my-header v-show="notHomeLogin"></my-header>
+      <my-sidebar v-show="notHomeLogin"></my-sidebar>
       <main class="mdl-layout__content mdl-color--grey-100 my-main">
         <my-loading></my-loading>
         <!-- 下一级视图 -->
@@ -28,6 +28,11 @@
       'my-loading': Loading,
       'my-tip': Tip,
       'my-sidebar': Sidebar
+    },
+    computed: {
+      notHomeLogin: function () {
+        return this.$route.name !== 'home' && this.$route.path !== '/login'
+      }
     }
   }
 </script>
