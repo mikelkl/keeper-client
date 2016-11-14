@@ -12,12 +12,8 @@
 </template>
 
 <script>
-  // import Drawer from '../utils/Drawer'
-
+  import { SET_TIP } from '../../vuex/mutation_types.js'
   export default {
-    // components: {
-    //   'drawer': Drawer
-    // },
     created () {
         // 组件创建完后获取数据，
         // 此时 data 已经被 observed 了
@@ -25,12 +21,11 @@
     },
     methods: {
       drawECG: function () {
-        // this.loading = true
         this.$store.commit('SET_LOADING', true)
         this.$http.get('http://localhost:5000/api/v1.0/record/2.txt/1')
         .then(function (ret) {
           this.$store.commit('SET_LOADING', false)
-          // this.loading = false
+          console.info(Highcharts)
           var chart = new Highcharts.Chart({
             chart: {
               renderTo: 'container',
@@ -61,9 +56,14 @@
               name: '测量数据'
             }]
           })
-        })
-        .then(function (err) {
+        }).catch(err => {
           console.log(err)
+          this.$store.commit([SET_TIP], {
+            message: err || 'Error!',
+            actionHandler: function (event) {},
+            timeout: 2000,
+            actionText: 'Undo'
+          })
         })
       }
     }
