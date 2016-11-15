@@ -1,8 +1,8 @@
 <template>
   <div id="app">
-    <div class="layout mdl-layout mdl-js-layout mdl-layout--fixed-drawer mdl-layout--fixed-header">
+    <div class="layout mdl-layout mdl-js-layout mdl-layout--fixed-drawer mdl-layout--fixed-header ">
       <my-header v-show="notHomeLogin"></my-header>
-      <my-sidebar v-show="notHomeLogin"></my-sidebar>
+      <my-drawer v-show="notHomeLogin"></my-drawer>
       <main class="mdl-layout__content mdl-color--grey-100 my-main">
         <my-loading></my-loading>
         <!-- 下一级视图 -->
@@ -18,7 +18,7 @@
 <script>
   import mdl from 'material-design-lite/material.js'
   import Header from './components/common/Header'
-  import Sidebar from './components/common/Sidebar'
+  import Drawer from './components/common/Drawer'
   import Loading from './components/utils/Loading'
   import Tip from './components/utils/Tip'
 
@@ -27,7 +27,7 @@
       'my-header': Header,
       'my-loading': Loading,
       'my-tip': Tip,
-      'my-sidebar': Sidebar
+      'my-drawer': Drawer
     },
     computed: {
       notHomeLogin: function () {
