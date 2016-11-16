@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <div class="layout mdl-layout mdl-js-layout mdl-layout--fixed-drawer mdl-layout--fixed-header ">
+    <div class="layout mdl-layout mdl-js-layout mdl-layout--fixed-drawer mdl-layout--fixed-header">
       <my-header v-show="notHomeLogin"></my-header>
       <my-drawer v-show="notHomeLogin"></my-drawer>
       <main class="mdl-layout__content mdl-color--grey-100 my-main">
