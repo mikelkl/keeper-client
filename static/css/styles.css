@@ -14,11 +14,14 @@ html, body {
   bottom: 19px;
 }
 .layout .mdl-layout__header .mdl-layout__drawer-button {
-  /*color: white;*/
+  color: rgba(0,0,0,0.5);
   background-color: transparent;
 }
 .mdl-layout__drawer .avatar {
   margin-bottom: 16px;
+}
+.mdl-layout__tab-bar-button {
+  display: none;
 }
 .drawer {
   border: none;
