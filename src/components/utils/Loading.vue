@@ -1,34 +1,16 @@
 <template>
   <div>
     <transition name="spinner-move">
-      <div v-show="$store.state.doc.loading && forLogin" class="loading-wrapper loading-login-wrapper">
+      <div v-show="$store.state.doc.loading" class="loading-wrapper">
         <div class="mdl-spinner mdl-js-spinner is-active loading"></div>
-      </div>
-    </transition>
-    <transition name="spinner-move">
-      <div v-show="$store.state.doc.loading && !forLogin" class="loading-wrapper">
-        <div class="mdl-spinner mdl-js-spinner is-active loading loading-common"></div>
       </div>
     </transition>
   </div>
 </template>
 
-<script>
-  export default {
-    computed: {
-      forLogin: function () {
-        return this.$route.path === '/login'
-      }
-    }
-  }
-</script>
-
 <style scoped>
 .loading-wrapper {
-  /*height: 0px;*/
   text-align: center;
-}
-.loading-login-wrapper {
   height: 0px;
   text-align: center;
 }
@@ -71,10 +53,6 @@
   position: relative;
   top: 5vh;
   z-index: 5;
-}
-.loading-common {
-  display:block;
-  margin: 50px auto;
-  top: 0;
+  box-shadow: #666 0px 0px 10px;
 }
 </style>
