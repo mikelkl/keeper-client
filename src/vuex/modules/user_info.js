@@ -13,16 +13,16 @@ const state = {
   // recentReplies: '',
   // github: '',
   // createAt: ''
-  nickname: '',
+  nickname: '请先登录',
   sex: '',
   age: '',
   height: '',
   weight: '',
-  email: '',
+  email: 'hello@example.com',
   about_me: '',
   member_since: '',
   last_seen: '',
-  avatar: ''
+  avatar: '/static/images/user.jpg'
 }
 
 const mutations = {
