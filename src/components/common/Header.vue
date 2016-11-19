@@ -18,30 +18,15 @@
     </div>
     <!-- Tabs -->
     <div class="mdl-layout__tab-bar mdl-js-ripple-effect my-tab-bar mdl-color--white">
-      <a href="" class="mdl-layout__tab mdl-color-text--grey-600">就诊记录</a>
-      <a href="" class="mdl-layout__tab mdl-color-text--grey-600">心电图记录</a>
-      <a href="" class="mdl-layout__tab mdl-color-text--grey-600">一键急救</a>
-      <a href="" class="mdl-layout__tab is-active">个人信息</a>
+      <router-link to="/treatment-record" class="mdl-layout__tab mdl-color-text--grey-600">就诊记录</router-link>
+      <router-link to="/ecg" class="mdl-layout__tab mdl-color-text--grey-600">心电图记录</router-link>
+      <router-link to="/aid" class="mdl-layout__tab mdl-color-text--grey-600">一键急救</router-link>
+      <router-link to="/user-info" class="mdl-layout__tab mdl-color-text--grey-600">个人信息</router-link>
     </div>
-    <!-- <div v-if="$route.path === '/treatment-record'" class="mdl-layout__header-row">
-      <span class="mdl-layout-title mdl-color-text--white">就诊记录</span>
-    </div>
-    <div v-if="$route.path === '/ecg'" class="mdl-layout__header-row mdl-color--cyan-600">
-      <span class="mdl-layout-title mdl-color-text--white">心电图记录</span>
-    </div>
-    <div v-if="$route.path === '/aid'" class="mdl-layout__header-row mdl-color--teal-600">
-      <span class="mdl-layout-title mdl-color-text--white">一键急救</span>
-    </div>
-    <div v-if="$route.path === '/user-info'" class="mdl-layout__header-row">
-      <span class="mdl-layout-title mdl-color-text--white">个人信息</span>
-    </div> -->
   </header>
 </template>
 
 <style scoped>
-/*.mdl-layout__header {
-  box-shadow: none;
-}*/
 .my-underline {
   border-bottom: 1px solid #e8e8e8;
 }
@@ -53,9 +38,21 @@
   height: auto;
   padding: 0;
 }
-.is-active {
+.router-link-active {
   font-weight: 500;
   color: #666 !important;
+}
+.router-link-active:after {
+  height: 2px;
+  width: 100%;
+  display: block;
+  content: " ";
+  bottom: 0;
+  left: 0;
+  position: absolute;
+  background: rgb(255,64,129);
+  animation: border-expand 0.2s cubic-bezier(0.4, 0, 0.4, 1) 0.01s alternate forwards;
+  transition: all 1s cubic-bezier(0.4, 0, 1, 1);
 }
 label.mdl-button.mdl-js-button.mdl-button--icon {
   top: -20px
