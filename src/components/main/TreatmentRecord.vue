@@ -1,5 +1,6 @@
 <template>
-  <div class="common-content">
+  <div class="">
+  <!-- <div class="common-content"> -->
     <h1>就诊记录</h1>
   </div>
 </template>

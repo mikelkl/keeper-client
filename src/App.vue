@@ -1,8 +1,9 @@
 <template>
   <div id="app">
-    <div class="layout mdl-layout mdl-js-layout mdl-layout--fixed-drawer mdl-layout--fixed-header">
-      <my-header v-show="notHomeLogin"></my-header>
-      <my-drawer v-show="notHomeLogin"></my-drawer>
+    <div class="layout mdl-layout mdl-js-layout mdl-layout--fixed-header">
+    <!-- <div class="layout mdl-layout mdl-js-layout mdl-layout--fixed-drawer mdl-layout--fixed-header"> -->
+      <my-header v-show="showHeaderDrawer"></my-header>
+      <my-drawer v-show="showHeaderDrawer"></my-drawer>
       <main class="mdl-layout__content mdl-color--grey-100 my-main">
         <my-loading></my-loading>
         <!-- 下一级视图 -->
@@ -30,7 +31,7 @@
       'my-drawer': Drawer
     },
     computed: {
-      notHomeLogin: function () {
+      showHeaderDrawer: function () {
         return this.$route.name !== 'home' && this.$route.path !== '/login'
       }
     }

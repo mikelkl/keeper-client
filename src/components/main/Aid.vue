@@ -1,5 +1,6 @@
 <template>
-  <div class="mdl-grid content common-content">
+  <div class="mdl-grid content">
+  <!-- <div class="mdl-grid content common-content"> -->
       <div class='mdl-card mdl-shadow--2dp mdl-cell mdl-cell--12-col'>
         <div class="mdl-card__title">
           <h2 class="mdl-card__title-text keeper-title">地图显示</h2>
