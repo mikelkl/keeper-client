@@ -1,20 +1,28 @@
 <template>
   <div class="mdl-grid content">
-  <!-- <div class="mdl-grid content common-content"> -->
-    <div class='mdl-card mdl-shadow--2dp mdl-cell mdl-cell--12-col'>
-      <div class="mdl-card__title">
+    <my-card class='mdl-card mdl-shadow--2dp mdl-cell mdl-cell--12-col'>
+      <div slot="title" class="mdl-card__title">
         <h2 class="mdl-card__title-text keeper-title">心电图测量数据</h2>
       </div>
-      <div class="mdl-card__actions mdl-card--border">
+      <div slot="media">
+      </div>
+      <div slot="supporting-text">
+      </div>
+      <div slot="actions" class="mdl-card__actions mdl-card--border">
         <div id="container" class="show-chart"></div>
       </div>
-    </div>
+    </my-card>
   </div>
 </template>
 
 <script>
   import { SET_TIP } from '../../vuex/mutation_types.js'
+  import Card from '../utils/Card'
+
   export default {
+    components: {
+      'my-card': Card
+    },
     created () {
         // 组件创建完后获取数据，
         // 此时 data 已经被 observed 了
