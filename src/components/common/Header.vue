@@ -1,7 +1,5 @@
 <template>
   <header class="header mdl-layout__header tab-header mdl-color--white">
-  <!-- <header class="header mdl-layout__header"> -->
-  <!-- <header class="header mdl-layout__header mdl-layout__header--waterfall mdl-layout__header--waterfall-hide-top"> -->
     <div class="mdl-layout__header-row mdl-color--white mdl-color-text--grey-600 my-underline">
       <img src="../../assets/images/logo2.png" width="30" height="30" style="margin-right: 5px;">
       <span class="mdl-layout-title">Keeper</span>

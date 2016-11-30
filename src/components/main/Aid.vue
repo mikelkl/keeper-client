@@ -207,11 +207,6 @@
   border-radius: 100%;
   border: 3px solid #fff;
 }
-/*.aid-avatar {
-  width: 50px;
-  height: 50px;
-  margin-right: 10px;
-}*/
 .patient-name {
   margin-top: 50px;
   text-align: center;
