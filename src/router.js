@@ -11,52 +11,10 @@ const Aid = resolve => require(['./components/main/Aid'], resolve)
 const ECG = resolve => require(['./components/main/ECG'], resolve)
 const TreatmentRecord = resolve => require(['./components/main/TreatmentRecord'], resolve)
 const UserInfo = resolve => require(['./components/main/UserInfo'], resolve)
+const FollowupInfo = resolve => require(['./components/main/FollowupInfo'], resolve)
 const Home = resolve => require(['./components/Home'], resolve)
-import Login from './components/login/Login'
-// const Login = resolve => require(['./components/login/Login'], resolve)
-// const Drawer = resolve => require(['./components/Drawer'], resolve)
-// const test1 = resolve => require(['./components/test1'], resolve)
-// const test2 = resolve => require(['./components/test2'], resolve)
+const Login = resolve => require(['./components/login/Login'], resolve)
 
-// 2. 定义路由
-// 每个路由应该映射一个组件。 其中"component" 可以是
-// 通过 Vue.extend() 创建的组件构造器，
-// 或者，只是一个组件配置对象。
-// 我们晚点在讨论嵌套路由。
-// const routes = [{
-//   path: '/main',
-//   component: Drawer,
-//   // components: {
-//   //   main: Drawer
-//   // },
-//   children: [
-//     {
-//       path: 'treatment-record',
-//       component: TreatmentRecord
-//     }, {
-//       path: 'user-info',
-//       component: UserInfo
-//     }, {
-//       path: 'aid',
-//       component: Aid
-//     }, {
-//       path: 'ecg',
-//       component: ECG
-//     }
-//   ]
-// }, {
-//   path: '/home',
-//   component: Home,
-//   children: [
-//     {
-//       path: 'test1',
-//       component: test1
-//     }
-//   ]
-// }, {
-//   path: '/test2',
-//   component: test2
-// }]
 const routes = [{
   path: '/treatment-record',
   name: '就诊记录',
@@ -73,6 +31,10 @@ const routes = [{
   path: '/ecg',
   name: '心电图记录',
   component: ECG
+}, {
+  path: '/followup-info',
+  name: '诊后随访',
+  component: FollowupInfo
 }, {
   path: '/login',
   name: '登陆',
