@@ -9,13 +9,7 @@
         <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-cell--7-offset mdl-cell--3-offset-tablet mdl-cell--1-offset-phone">了解更多<i class="material-icons" role="presentation">arrow_drop_down</i></button>
         <router-link to="/login" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-color--black mdl-color-text--white">登陆</router-link>
       </div>
-      <!-- <header class="mdl-grid"> -->
-      <!-- <img src="../assets/images/logo.png" class="mdl-cell--1-offset mdl-cell--1-offset-tablet"> -->
-        <!-- <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-cell--7-offset mdl-cell--3-offset-tablet mdl-cell--1-offset-phone">了解更多<i class="material-icons" role="presentation">arrow_drop_down</i></button>
-        <router-link to="/login" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-color--black mdl-color-text--white">登陆</router-link> -->
-        <!-- <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-color--black mdl-color-text--white" id="show-modal" @click="showModal = true">登陆</button> -->
       </header>
-
       <div class="intro mdl-cell--6-col mdl-cell--1-offset horizon-anim">
         <h3 class="mdl-color-text--cyan-600">Keeper <br> 心电医疗云平台 <br> 设备通过蓝牙模块将采集数据输出</h3>
         <h6>一款基于心电监护终端和医疗云平台的在线心电医疗平台，通过特征采集，数据分析，挂号复诊，应急抢救等功能，辅助医生，
@@ -199,7 +193,6 @@
         </div>
       </footer>
     </main>
-    <!-- <router-view></router-view> -->
   </div>
 </template>
 
