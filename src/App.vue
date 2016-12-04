@@ -98,6 +98,9 @@
 <style src="material-design-lite/material.css"></style>
 <style src="../static/css/styles.css"></style>
 <style scoped>
+.modal-mask {
+  top: 64px;
+}
 .my-main {
   margin-left: 0px;
 }
