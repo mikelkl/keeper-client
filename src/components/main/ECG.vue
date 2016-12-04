@@ -1,8 +1,8 @@
 <template>
   <div class="mdl-grid content">
     <my-card class='mdl-card mdl-shadow--2dp mdl-cell mdl-cell--12-col'>
-      <div slot="title" class="mdl-card__title">
-        <h2 class="mdl-card__title-text keeper-title">心电图测量数据</h2>
+      <div slot="title" class="mdl-card__title" style="background:#00ACC1;">
+        <h2 class="mdl-card__title-text keeper-title mdl-color-text--white">心电图测量数据</h2>
       </div>
       <div slot="media">
       </div>

@@ -1,6 +1,6 @@
 <template>
   <div class="mdl-grid content">
-    <my-card class="mdl-cell--2-col mdl-cell--top" style="margin-right: 10px;">
+    <my-card class="mdl-cell--2-col mdl-cell--top" style="margin-right: 10px;margin-top: 16px;">
       <div slot="title" class="mdl-card__title" style="padding-bottom: 0px;">
         <div class="">账户设置</div>
       </div>
@@ -43,9 +43,9 @@
       <div slot="actions">
       </div>
     </my-card>
-    <my-card class="user-info-card mdl-cell--10-col mdl-cell--top">
-      <div slot="title" class="mdl-card__title mdl-card--border">
-        <div class="mdl-card__title-text">概览</div>
+    <my-card class="user-info-card mdl-cell--10-col mdl-cell--top" style="margin-top: 16px;">
+      <div slot="title" class="mdl-card__title mdl-card--border mdl-color--red-900">
+        <div class="mdl-card__title-text keeper-title mdl-color-text--white">概览</div>
       </div>
       <div slot="media">
       </div>
@@ -111,11 +111,17 @@
   min-height: 0px;
 }
 .selected {
-  background-color: #cc181e;
+  background-color: #b71c1c;
 }
 .selected > a {
   font-weight: 300;
   color: white;
   text-decoration: none;
+}
+.keeper-title {
+  align-self: flex-start;
+  padding-left: 15px;
+  color: #00897B;
+  font-weight: 500;
 }
 </style>
