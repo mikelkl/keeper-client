@@ -23,6 +23,9 @@ html, body {
 .mdl-layout__tab-bar-button {
   display: none;
 }
+.is-compact .mdl-layout__drawer-button {
+  margin: 0px 12px;
+}
 .drawer {
   border: none;
 }
