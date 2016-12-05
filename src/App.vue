@@ -9,14 +9,6 @@
         <my-modal v-if="showModal" @close="showModal = false">
           <h3 slot="header">添加就诊记录</h3>
           <form action="#" slot="body">
-            <!-- <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-              <input class="mdl-textfield__input" type="text" id="account">
-              <label class="mdl-textfield__label" for="account">用户名</label>
-            </div><br>
-            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-              <input class="mdl-textfield__input" type="password" id="pass">
-              <label class="mdl-textfield__label" for="pass">密码</label>
-            </div> -->
             <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" v-bind:class="{'is-upgraded': showText1, 'is-focused': showText1}">
               <input @input="showText1 = true" @focus="showText1 = true" @blur="showText1 = showText1 && record.date" class="mdl-textfield__input" type="text" id="date" v-model="record.date">
               <label class="mdl-textfield__label" for="date">就诊日期</label>
@@ -54,8 +46,6 @@
 </template>
 
 <script>
-  import mdl from 'material-design-lite/material.js'
-
   const Header = resolve => require(['./components/common/Header'], resolve)
   const Drawer = resolve => require(['./components/common/Drawer'], resolve)
   const Loading = resolve => require(['./components/utils/Loading'], resolve)
@@ -95,7 +85,6 @@
   }
 </script>
 
-<style src="material-design-lite/material.css"></style>
 <style src="../static/css/styles.css"></style>
 <style scoped>
 .modal-mask {
