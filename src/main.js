@@ -6,10 +6,10 @@ import router from './router.js'
 import store from './vuex/store.js'
 
 // import Vuex from 'vuex'
-import VueResource from 'vue-resource'
+// import VueResource from 'vue-resource'
 
 // Vue.use(Vuex)
-Vue.use(VueResource)
+// Vue.use(VueResource)
 
 // router.beforeEach((to, from, next) => {
 //   if (to.path.indexOf('/main/') !== -1) {

@@ -76,7 +76,7 @@
           </div>
           <div class="mdl-cell--9-col">
             <p>&nbsp;</p>
-            <p>{{ $store.state.userInfo.email }} <a href="">Create a channel Advanced</a></p>
+            <p>{{ email }} <a href="">Create a channel Advanced</a></p>
             <p>
               <span>Standard</span>
               <a href="">Learn about Keeper Red</a>
@@ -98,6 +98,25 @@
   export default {
     components: {
       'my-card': Card
+    },
+    data () {
+      return {
+        email: Bmob.User.current().get('email') || 'hello@example.com'
+      }
+    },
+    beforeRouteEnter (to, from, next) {
+      // 在渲染该组件的对应路由被 confirm 前调用
+      // 不！能！获取组件实例 `this`
+      // 因为当钩子执行前，组件实例还没被创建
+      next(vm => {
+        var currentUser = Bmob.User.current()
+        if (currentUser) {
+            // do stuff with the user
+          console.log(currentUser.get('username'))
+        } else {
+            // show the signup or login page
+        }
+      })
     }
   }
 </script>

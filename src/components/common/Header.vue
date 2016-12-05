@@ -30,7 +30,7 @@
         <!-- emit event on the App.vue -->
         <li class="mdl-menu__item" @click="$emit('show')">New record</li>
       </ul>
-      <img id="s-avatar" v-bind:src="$store.state.userInfo.avatar" class="s-avatar">
+      <img id="s-avatar" v-bind:src="headUrl" class="s-avatar">
       <div class="mdl-tooltip" data-mdl-for="s-avatar">
       View profile and more
       </div>
@@ -55,6 +55,16 @@
 
   </header>
 </template>
+
+<script>
+  export default {
+    data () {
+      return {
+        headUrl: Bmob.User.current().get('headUrl') || '/static/images/user.jpg'
+      }
+    }
+  }
+</script>
 
 <style scoped>
 .is-compact {

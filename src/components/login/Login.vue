@@ -11,11 +11,11 @@
     <div style="padding: 16px;" slot="actions">
       <form action="#">
         <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" v-bind:class="{'is-upgraded': showText1, 'is-focused': showText1}">
-          <input @input="showText1 = true" @focus="showText1 = true" @blur="showText1 = showText1 && user.account" class="mdl-textfield__input" type="text" id="account" v-model="user.account">
+          <input @input="showText1 = true" @focus="showText1 = true" @blur="showText1 = showText1 && account" class="mdl-textfield__input" type="text" id="account" v-model="account">
           <label class="mdl-textfield__label" for="account">用户名</label>
         </div><br>
         <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" v-bind:class="{'is-upgraded': showText2, 'is-focused': showText2}">
-          <input @input="showText2 = true" @focus="showText2 = true" @blur="showText2 = showText2 && user.pass" class="mdl-textfield__input" type="password" id="pass" v-model="user.pass">
+          <input @input="showText2 = true" @focus="showText2 = true" @blur="showText2 = showText2 && pass" class="mdl-textfield__input" type="password" id="pass" v-model="pass">
           <label class="mdl-textfield__label" for="pass">密码</label>
         </div>
         <div  class="login-btn-group">
@@ -30,28 +30,53 @@
 
 <script>
   import Card from '../utils/Card'
+  import * as types from '../../vuex/mutation_types'
+
   export default {
     components: {
       'my-card': Card
     },
     data () {
       return {
-        user: {},
+        account: '',
+        pass: '',
         showText1: false,
         showText2: false
       }
     },
     methods: {
       login () {
-        this.$store.commit('SET_LOADING', true)
-        this.$store.dispatch('setBaseInfo', {
-          data: {
-            account: this.user.account,
-            pass: this.user.pass
+        this.$store.commit(types.SET_LOADING, true)
+
+        // design by vuex
+        // this.$store.dispatch('setBaseInfo', {
+        //   data: {
+        //     account: this.account,
+        //     pass: this.pass
+        //   },
+        //   callback: {
+        //     success: this.success,
+        //     fail: this.reset
+        //   }
+        // })
+
+        // user bomb
+        let that = this
+        Bmob.User.logIn(this.account, this.pass, {
+          success: function (user) {
+            // Do stuff after successful login.
+            that.$router.push('/treatment-record')
+            that.$store.commit('SET_LOADING', false)
           },
-          callback: {
-            success: this.success,
-            fail: this.reset
+          error: function (user, error) {
+            // The login failed. Check error to see why.
+            that.$store.commit('SET_LOADING', false)
+            that.$store.commit(types.SET_TIP, {
+              message: error.message || 'Error!',
+              actionHandler: function (event) {},
+              timeout: 2000,
+              actionText: 'Undo'
+            })
           }
         })
       },
@@ -59,7 +84,8 @@
         this.$router.push('/treatment-record')
       },
       reset (event) {
-        this.user = {}
+        this.account = ''
+        this.pass = ''
         this.showText1 = false
         this.showText2 = false
       }
