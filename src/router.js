@@ -12,6 +12,7 @@ const ECG = resolve => require(['./components/main/ECG'], resolve)
 const TreatmentRecord = resolve => require(['./components/main/TreatmentRecord'], resolve)
 const UserInfo = resolve => require(['./components/main/UserInfo'], resolve)
 const FollowupInfo = resolve => require(['./components/main/FollowupInfo'], resolve)
+const ManageAccount = resolve => require(['./components/main/ManageAccount'], resolve)
 const Home = resolve => require(['./components/Home'], resolve)
 const Login = resolve => require(['./components/login/Login'], resolve)
 
@@ -32,9 +33,13 @@ const routes = [{
   name: '心电图记录',
   component: ECG
 }, {
-  path: '/followup-info',
-  name: '诊后随访',
+  path: '/followup-info/:id',
+  name: 'followup-info',
   component: FollowupInfo
+}, {
+  path: '/manage-account',
+  name: '管理账户',
+  component: ManageAccount
 }, {
   path: '/login',
   name: '登陆',
