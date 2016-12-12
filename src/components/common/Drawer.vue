@@ -33,9 +33,9 @@
   export default {
     data () {
       return {
-        username: Bmob.User.current().get('username') || '请先登录',
-        email: Bmob.User.current().get('email') || 'hello@example.com',
-        headUrl: Bmob.User.current().get('headUrl') || '/static/images/user.jpg'
+        headUrl: Bmob.User.current() ? Bmob.User.current().get('headUrl') : '/static/images/user.jpg',
+        username: Bmob.User.current() ? Bmob.User.current().get('username') : '请先登录',
+        email: Bmob.User.current() ? Bmob.User.current().get('email') : 'hello@example.com'
       }
     },
     methods: {
