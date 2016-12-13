@@ -2,10 +2,35 @@
   <div id="app">
     <div class="layout mdl-layout mdl-js-layout mdl-layout--fixed-header">
     <!-- <div class="layout mdl-layout mdl-js-layout mdl-layout--fixed-drawer mdl-layout--fixed-header"> -->
-      <my-header v-show="showHeaderDrawer" @show="showModal = true"></my-header>
+      <my-header v-show="showHeaderDrawer"></my-header>
+      <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect"
+          for="add-group">
+        <!-- emit event on the App.vue -->
+        <li class="mdl-menu__item" @click="showModal = true">New record</li>
+      </ul>
+      <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect"
+          for="s-avatar">
+          <li class="mdl-menu__item mdl-menu__item--full-bleed-divider wide-menu__item" disabled>
+            <img v-bind:src="headUrl" class="b-avatar">
+            <div>
+              <p class="username">
+                {{ username }}
+              </p>
+              <p class="email">
+                {{ email }}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
+                <a href="">隐私权政策</a>
+              </p>
+            </div>
+          </li>
+          <router-link to="/manage-account" style="text-decoration: none;">
+          <li class="mdl-menu__item mdl-menu__item--full-bleed-divider">
+              <i class="material-icons menu-icon">list</i>管理账号
+          </li>
+        </router-link>
+          <li class="mdl-menu__item" @click="logOut()"><i class="material-icons menu-icon">exit_to_app</i>退出</li>
+      </ul>
       <my-drawer v-show="showHeaderDrawer"></my-drawer>
       <main class="mdl-layout__content mdl-color--grey-100 my-main">
-        <my-loading></my-loading>
         <my-modal v-if="showModal" @close="showModal = false">
           <h3 slot="header">添加就诊记录</h3>
           <form action="#" slot="body">
@@ -35,6 +60,7 @@
           <div slot="footer">
           </div>
         </my-modal>
+        <my-loading></my-loading>
         <!-- 下一级视图 -->
         <transition name="component-fade" mode="out-in">
           <router-view></router-view>
@@ -68,6 +94,9 @@
     data () {
       return {
         record: {},
+        headUrl: Bmob.User.current() ? Bmob.User.current().get('headUrl') : '/static/images/user.jpg',
+        username: Bmob.User.current() ? Bmob.User.current().get('username') : '请先登录',
+        email: Bmob.User.current() ? Bmob.User.current().get('email') : 'hello@example.com',
         showModal: false,
         showText1: false,
         showText2: false,
@@ -80,6 +109,10 @@
       reset () {
         this.record = {}
         this.showText1 = this.showText2 = this.showText3 = this.showText4 = this.showText5 = false
+      },
+      logOut () {
+        Bmob.User.logOut()
+        this.$router.push('/home')
       }
     }
   }
@@ -87,6 +120,31 @@
 
 <style src="../static/css/styles.css"></style>
 <style scoped>
+.menu-icon {
+  vertical-align: middle;
+  margin-right: 12px;
+}
+.wide-menu__item {
+  height: 96px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.username {
+  margin-top: 20px;
+  margin-bottom: 4px;
+  color: rgba(0,0,0,0.87);
+  font-size: 16px;
+}
+.email {
+  font-size: 10px;
+}
+.b-avatar {
+  width: 64px;
+  height: 64px;
+  border-radius: 100%;
+  margin-right: 15px;
+}
 .modal-mask {
   top: 64px;
 }

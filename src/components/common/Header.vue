@@ -3,16 +3,19 @@
   <!-- <header class="header mdl-layout__header tab-header mdl-color--white"> -->
     <div class="mdl-layout__header-row mdl-color--white mdl-color-text--grey-600 my-underline">
       <img src="../../assets/images/logo2.png" width="30" height="30" style="margin-right: 5px;">
-      <span class="mdl-layout-title">Keeper</span>
+      <span class="mdl-layout-title">Keeper - 心电医疗服务云平台</span>
       <div class="mdl-layout-spacer"></div>
       <div class="mdl-textfield mdl-js-textfield mdl-textfield--expandable">
         <label class="mdl-button mdl-js-button mdl-button--icon" for="search">
-          <i class="material-icons">search</i>
+          <i class="material-icons" id="search-icon">search</i>
         </label>
         <div class="mdl-textfield__expandable-holder space-right">
-          <input class="mdl-textfield__input" type="text" id="search">
-          <label class="mdl-textfield__label" for="search">Enter your query...</label>
+          <input class="mdl-textfield__input" type="text" id="search" v-model="searchUsername" @keydown="search()">
+          <label class="mdl-textfield__label" for="search">输入病人姓名...</label>
         </div>
+      </div>
+      <div class="mdl-tooltip" data-mdl-for="search-icon">
+        搜索病人
       </div>
       <i id="notifications" class="material-icons">notifications_none</i>
       <div class="mdl-tooltip" data-mdl-for="notifications">
@@ -25,31 +28,27 @@
       <div class="mdl-tooltip" data-mdl-for="add-group">
       Create new ...
       </div>
-      <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect"
-          for="add-group">
+      <!-- <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect"
+          for="add-group"> -->
         <!-- emit event on the App.vue -->
-        <li class="mdl-menu__item" @click="$emit('show')">New record</li>
-      </ul>
+        <!-- <li class="mdl-menu__item" @click="$emit('show')">New record</li>
+      </ul> -->
       <img id="s-avatar" v-bind:src="headUrl" class="s-avatar">
       <div class="mdl-tooltip" data-mdl-for="s-avatar">
       View profile and more
       </div>
-      <!-- <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu"
+      <!-- <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect"
           for="s-avatar">
-          <li class="mdl-menu__item--full-bleed-divider">Another Action</li>
-          <li class="avatar-menu-bottom">
-            <button class="mdl-button mdl-js-button mdl-button--raised">
-              setting
-            </button>
-            <button type="button" name="button">2</button>
-          </li>
+          <li class="mdl-menu__item mdl-menu__item--full-bleed-divider">Another Action</li>
       </ul> -->
     </div>
     <!-- Tabs -->
     <div class="mdl-layout__tab-bar mdl-js-ripple-effect my-tab-bar mdl-color--white">
       <router-link to="/treatment-record" class="mdl-layout__tab mdl-color-text--grey-600">就诊记录</router-link>
-      <router-link to="/ecg" class="mdl-layout__tab mdl-color-text--grey-600">心电图记录</router-link>
-      <router-link to="/aid" class="mdl-layout__tab mdl-color-text--grey-600">一键急救</router-link>
+      <span v-if="$store.state.patient.currentPatient">
+        <router-link to="/ecg" class="mdl-layout__tab mdl-color-text--grey-600">心电图记录</router-link>
+        <router-link to="/aid" class="mdl-layout__tab mdl-color-text--grey-600">一键急救</router-link>
+      </span>
       <router-link to="/user-info" class="mdl-layout__tab mdl-color-text--grey-600">个人信息</router-link>
     </div>
 
@@ -57,10 +56,41 @@
 </template>
 
 <script>
+  import * as types from '../../vuex/mutation_types'
+
   export default {
     data () {
       return {
-        headUrl: Bmob.User.current().get('headUrl') || '/static/images/user.jpg'
+        headUrl: Bmob.User.current() ? Bmob.User.current().get('headUrl') : '/static/images/user.jpg',
+        searchUsername: ''
+      }
+    },
+    methods: {
+      search () {
+        // console.log(event.keyCode)
+        if (event.keyCode === 13) {
+          let query = new Bmob.Query(Bmob.User)
+          query.equalTo('username', this.searchUsername)
+
+          // 查询单条数据
+          let that = this
+          query.first({
+            success: function (user) {
+              // Do stuff
+              if (user.get('Role') === 1) {
+                that.$store.commit(types.SET_CURRENT_PATIENT, user)
+                that.$router.push('/ecg')
+              } else {
+                that.$store.commit(types.SET_TIP, {
+                  message: '只支持搜索病人!',
+                  actionHandler: function (event) {},
+                  timeout: 2000,
+                  actionText: 'Undo'
+                })
+              }
+            }
+          })
+        }
       }
     }
   }
@@ -72,8 +102,8 @@
 }
 /*.mdl-menu {
   padding:0px 0px;
-}
-.avatar-menu-bottom {
+}*/
+/*.avatar-menu-bottom {
   background: #f5f5f5;
   width: 100px;
   padding: 15px;
