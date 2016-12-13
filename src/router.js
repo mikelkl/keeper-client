@@ -13,6 +13,7 @@ const TreatmentRecord = resolve => require(['./components/main/TreatmentRecord']
 const UserInfo = resolve => require(['./components/main/UserInfo'], resolve)
 const FollowupInfo = resolve => require(['./components/main/FollowupInfo'], resolve)
 const ManageAccount = resolve => require(['./components/main/ManageAccount'], resolve)
+const Chart = resolve => require(['./components/main/Chart'], resolve)
 const Home = resolve => require(['./components/Home'], resolve)
 const Login = resolve => require(['./components/login/Login'], resolve)
 
@@ -35,7 +36,14 @@ const routes = [{
 }, {
   path: '/followup-info/:id',
   name: 'followup-info',
-  component: FollowupInfo
+  component: FollowupInfo,
+  children: [
+    {
+      path: 'chart/:type',
+      name: 'chart',
+      component: Chart
+    }
+  ]
 }, {
   path: '/manage-account',
   name: '管理账户',
