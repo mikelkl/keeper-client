@@ -65,7 +65,16 @@
         Bmob.User.logIn(this.account, this.pass, {
           success: function (user) {
             // Do stuff after successful login.
-            that.$router.push('/treatment-record')
+            if (user.get('Role') === 2) {
+              that.$router.push('/user-info')
+            } else {
+              that.$store.commit(types.SET_TIP, {
+                message: '只有医生有权限登录Web端!',
+                actionHandler: function (event) {},
+                timeout: 2000,
+                actionText: 'Undo'
+              })
+            }
             that.$store.commit('SET_LOADING', false)
           },
           error: function (user, error) {
@@ -81,7 +90,7 @@
         })
       },
       success () {
-        this.$router.push('/treatment-record')
+        this.$router.push('/user-info')
       },
       reset (event) {
         this.account = ''

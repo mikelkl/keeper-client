@@ -11,22 +11,22 @@
         <div slot="supporting-text">
         </div>
         <div slot="actions" class="mdl-card__actions mdl-card--border mdl-color-text--grey-600">
-          <img src="../../assets/images/user.jpg" class="aid-avatar">
-          <p class="patient-name">mxm</p>
+          <img v-bind:src="headUrl" class="aid-avatar">
+          <p class="patient-name">{{ patientUsername }}</p>
           <ul class="mdl-list">
             <li class="mdl-list__item">
               <span class="mdl-list__item-primary-content">
-                年龄：20
+                年龄：{{ age }}
               </span>
             </li>
             <li class="mdl-list__item">
               <span class="mdl-list__item-primary-content">
-                性别：男
+                性别：{{ sex }}
               </span>
             </li>
             <li class="mdl-list__item">
               <span class="mdl-list__item-primary-content">
-                手机：18978784358
+                手机：{{ mobilePhoneNumber }}
               </span>
             </li>
           </ul>
@@ -165,7 +165,7 @@
   }
 
   function loadScript () {
-    var script = document.createElement('script')
+    let script = document.createElement('script')
 
     script.src = 'http://api.map.baidu.com/api?v=2.0&ak=jD80NNGOkZPEmG5Fugcaiyoa&callback=initialize'
     document.body.appendChild(script)
@@ -177,18 +177,37 @@
     components: {
       'my-card': Card
     },
+    data () {
+      return {
+        headUrl: this.$store.state.patient.currentPatient ? this.$store.state.patient.currentPatient.get('headUrl') : '/static/images/user.jpg',
+        patientUsername: this.$store.state.patient.currentPatient ? this.$store.state.patient.currentPatient.get('username') : '请先登录',
+        age: this.$store.state.patient.currentPatient ? this.$store.state.patient.currentPatient.get('age') : '',
+        sex: this.$store.state.patient.currentPatient ? (this.$store.state.patient.currentPatient.get('sex') === 0 ? '男' : '女') : '',
+        mobilePhoneNumber: this.$store.state.patient.currentPatient ? this.$store.state.patient.currentPatient.get('mobilePhoneNumber') : ''
+      }
+    },
     beforeRouteEnter (to, from, next) {
       // 在渲染该组件的对应路由被 confirm 前调用
       // 不！能！获取组件实例 `this`
       // 因为当钩子执行前，组件实例还没被创建
+      loadScript()
       next(vm => {
         vm.$store.commit('SET_LOADING', true)
-        loadScript()
-        initialize()
         setTimeout(function () {
+          initialize()
           vm.$store.commit('SET_LOADING', false)
         }, 1000)
       })
+    },
+    watch: {
+      $route () {
+        loadScript()
+        this.$store.commit('SET_LOADING', true)
+        setTimeout(function () {
+          initialize()
+          this.$store.commit('SET_LOADING', false)
+        }, 1000)
+      }
     }
   }
 </script>

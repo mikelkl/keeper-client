@@ -3,6 +3,32 @@
 
     <!-- side panel -->
     <div class="cards mdl-cell mdl-cell--3-col mdl-cell--8-col-tablet mdl-grid">
+      <my-card class="options mdl-card mdl-color--deep-purple-500 mdl-shadow--2dp">
+        <div slot="title">
+        </div>
+        <div slot="media">
+        </div>
+        <div slot="supporting-text" class="mdl-card__supporting-text mdl-color-text--blue-grey-50">
+          <h3>就诊记录</h3>
+          <ul class="mdl-list mdl-color-text--blue-grey-50">
+            <li @click="getDetail(record)" v-for="record in treatmentRecords" class="mdl-list__item mdl-list__item--three-line mdl-color-text--blue-grey-50 keeper-list__item_font">
+              <span>
+                <span><b>患者：{{ record.get('patient').get('username') }}</b></span>
+              <span style="display:block;">
+                  就诊原因：{{ record.get('treatmentReason').split('，')[0] }}&nbsp;……
+                </span>
+              <span><em>就诊日期：{{ record.get('date') }}</em></span>
+              </span>
+            </li>
+          </ul>
+        </div>
+        <div slot="actions" class="mdl-card__actions mdl-card--border">
+          <a href="#" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-color-text--blue-grey-50">更多信息</a>
+          <div class="mdl-layout-spacer"></div>
+          <i class="material-icons">expand_more</i>
+        </div>
+      </my-card>
+      <div class="separator mdl-cell--1-col"></div>
       <my-card class="mdl-card mdl-shadow--2dp horizon-center">
         <div slot="title" class="mdl-card__title patient-banner">
           <h2 class="mdl-card__title-text keeper-title mdl-color-text--white">病人资料</h2>
@@ -12,52 +38,25 @@
         <div slot="supporting-text">
         </div>
         <div slot="actions" class="mdl-card__actions mdl-card--border mdl-color-text--grey-600">
-          <img src="../../assets/images/user.jpg" class="aid-avatar">
-          <p class="patient-name">mxm</p>
+          <img v-bind:src="headUrl" class="aid-avatar">
+          <p class="patient-name">{{ patientUsername }}</p>
           <ul class="mdl-list">
             <li class="mdl-list__item">
               <span class="mdl-list__item-primary-content">
-                年龄：20
+                年龄：{{ age }}
               </span>
             </li>
             <li class="mdl-list__item">
               <span class="mdl-list__item-primary-content">
-                性别：男
+                性别：{{ sex }}
               </span>
             </li>
             <li class="mdl-list__item">
               <span class="mdl-list__item-primary-content">
-                手机：18978784358
+                手机：{{ mobilePhoneNumber }}
               </span>
             </li>
           </ul>
-        </div>
-      </my-card>
-      <div class="separator mdl-cell--1-col"></div>
-      <my-card class="options mdl-card mdl-color--deep-purple-500 mdl-shadow--2dp">
-        <div slot="title">
-        </div>
-        <div slot="media">
-        </div>
-        <div slot="supporting-text" class="mdl-card__supporting-text mdl-color-text--blue-grey-50">
-          <h3>就诊记录</h3>
-          <ul class="demo-list-three mdl-list mdl-color-text--blue-grey-50">
-            <li class="mdl-list__item mdl-list__item--three-line mdl-color-text--blue-grey-50 keeper-list__item_font">
-              <span>
-                <span><b>患者：莫绪旻</b></span>
-              <span style="display:block;">
-                  就诊原因：心律不齐，脉搏絮乱，生活作息不规律
-                </span>
-              <span><em>就诊日期：2015-11-24</em></span>
-              </span>
-            </li>
-          </ul>
-
-        </div>
-        <div slot="actions" class="mdl-card__actions mdl-card--border">
-          <a href="#" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-color-text--blue-grey-50">更多信息</a>
-          <div class="mdl-layout-spacer"></div>
-          <i class="material-icons">expand_more</i>
         </div>
       </my-card>
     </div>
@@ -75,7 +74,7 @@
           <div class="mdl-grid">
             <div class="mdl-cell mdl-cell--3-col" style="text-align:center;">
               <h4><img src="/static/images/37.png" width=50 heigth=50 class="img-rounded" alt="">就诊日期</h4>
-              <span class="text-muted">2015-11-24</span>
+              <span class="text-muted">{{ currentRecord.get('date') }}</span>
             </div>
             <div class="mdl-cell mdl-cell--3-col" style="text-align:center;">
               <h4><img src="/static/images/72.png" width=50 heigth=50 class="img-rounded" alt="">就诊医院</h4>
@@ -83,34 +82,26 @@
             </div>
             <div class="mdl-cell mdl-cell--3-col" style="text-align:center;">
               <h4><img src="/static/images/71.png" width=50 heigth=50 class="img-rounded" alt="">就诊医生</h4>
-              <span class="text-muted">陈钊医生</span>
+              <span class="text-muted">{{ currentRecord.get('doctor').get('username') }}</span>
             </div>
             <div class="mdl-cell mdl-cell--3-col" style="text-align:center;">
               <h4><img src="/static/images/76.png" width=50 heigth=50 class="img-rounded" alt="">诊断科室</h4>
-              <span class="text-muted">儿科</span>
+              <span class="text-muted">{{ currentRecord.get('doctor').get('administrative') }}</span>
             </div>
           </div>
           <div class="mdl-grid">
             <table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp mdl-cell mdl-cell--12-col">
               <thead>
                 <tr>
-                  <th class="mdl-data-table__cell--non-numeric">就诊医生</th>
-                  <th class="mdl-data-table__cell--non-numeric">诊断科室</th>
                   <th class="mdl-data-table__cell--non-numeric">医生职称</th>
-                  <th class="mdl-data-table__cell--non-numeric">就诊日期</th>
-                  <th class="mdl-data-table__cell--non-numeric">就诊医院</th>
                   <th class="mdl-data-table__cell--non-numeric">病情诊断</th>
                 </tr>
               </thead>
               <tbody>
                 <tr>
-                  <td class="mdl-data-table__cell--non-numeric">陈钊医生</td>
-                  <td class="mdl-data-table__cell--non-numeric">儿科</td>
-                  <td class="mdl-data-table__cell--non-numeric">主治医师</td>
-                  <td class="mdl-data-table__cell--non-numeric">2015-11-24</td>
-                  <td class="mdl-data-table__cell--non-numeric">四川大学华西医院</td>
+                  <td class="mdl-data-table__cell--non-numeric">{{ currentRecord.get('doctor').get('professional') }}</td>
                   <td class="mdl-data-table__cell--non-numeric" style="white-space: normal;">
-                    以胸闷、心慌2天来诊，自诉前几天曾熬夜，工作较忙而发病，并觉乏力、纳差。查体：脉搏90次/分，脉率不齐，即查心电图提示：窦性心律不齐，心率88次/分，st-t轻度改变。询问病史，既往体健。考虑：劳累所致心律失常，心肌供血不足。建议患者注意休息，避免劳累，多食富含维生素、蛋白质及微量元素的瓜果蔬菜，如有不适，及时就诊，以免发生严重的心脏疾患。
+                    {{ currentRecord.get('treatmentReason') }}
                   </td>
                 </tr>
               </tbody>
@@ -129,23 +120,12 @@
         </div>
         <div slot="actions" class="mdl-card__actions mdl-grid">
           <table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp mdl-cell mdl-cell--12-col">
-            <thead>
-              <tr>
-                <th class="mdl-data-table__cell--non-numeric">2015-11-24</th>
-                <th class="mdl-data-table__cell--non-numeric">2015-11-24</th>
-                <th class="mdl-data-table__cell--non-numeric">2015-11-26</th>
-                <th class="mdl-data-table__cell--non-numeric">2015-11-27</th>
-              </tr>
-            </thead>
             <tbody>
-              <tr>
+              <tr v-for="(item, index) in followups">
+                <th class="mdl-data-table__cell--non-numeric">{{ item.get('date') }}</th>
                 <td class="mdl-data-table__cell--non-numeric">
-                  <router-link to="/followup-info" class="mdl-color-text--deep-purple-500">诊后第1次随访</router-link>
-                  <!-- <a href="" class="mdl-color-text--deep-purple-500"  @click.prevent="showModal = true">诊后第1次随访</a> -->
+                  <router-link :to="{ name: 'followup-info', params: { id: index }}" class="mdl-color-text--deep-purple-500">诊后第{{ index + 1 }}次随访</router-link>
                 </td>
-                <td class="mdl-data-table__cell--non-numeric"><a href="" class="mdl-color-text--deep-purple-500">诊后第2次随访</a></td>
-                <td class="mdl-data-table__cell--non-numeric"><a href="" class="mdl-color-text--deep-purple-500">诊后第3次随访</a></td>
-                <td class="mdl-data-table__cell--non-numeric"><a href="" class="mdl-color-text--deep-purple-500">诊后第4次随访</a></td>
               </tr>
             </tbody>
           </table>
@@ -157,27 +137,75 @@
 
 <script>
   import Card from '../utils/Card'
+  import * as types from '../../vuex/mutation_types'
 
   export default {
     components: {
       'my-card': Card
     },
+    data () {
+      return {
+        treatmentRecords: null,
+        currentRecord: null,
+        followups: null,
+        headUrl: this.$store.state.patient.currentPatient ? this.$store.state.patient.currentPatient.get('headUrl') : '/static/images/user.jpg',
+        patientUsername: this.$store.state.patient.currentPatient ? this.$store.state.patient.currentPatient.get('username') : '请先登录',
+        age: this.$store.state.patient.currentPatient ? this.$store.state.patient.currentPatient.get('age') : '',
+        sex: this.$store.state.patient.currentPatient ? (this.$store.state.patient.currentPatient.get('sex') === 0 ? '男' : '女') : '',
+        mobilePhoneNumber: this.$store.state.patient.currentPatient ? this.$store.state.patient.currentPatient.get('mobilePhoneNumber') : ''
+      }
+    },
+    methods: {
+      getDetail (record) {
+        this.currentRecord = record
+        this.headUrl = record.get('patient').get('headUrl')
+        this.patientUsername = record.get('patient').get('username')
+        this.age = record.get('patient').get('age')
+        this.sex = record.get('patient').get('sex')
+        this.mobilePhoneNumber = record.get('patient').get('mobilePhoneNumber')
+
+        // 查询诊后随访记录
+        let Followup = Bmob.Object.extend('TreatmentFollowup')
+        let query = new Bmob.Query(Followup)
+        query.equalTo('treatment', record)
+        query.ascending('date')
+        query.include('treatment')
+
+        let that = this
+        query.find({
+          success: function (followups) {
+            console.info('共查询到 ' + followups.length + ' Followup条记录.')
+            that.followups = followups
+            that.$store.commit(types.SET_FOLLOWUP, followups)
+          },
+          error: function (error) {
+            console.log(error.message)
+          }
+        })
+      }
+    },
     beforeRouteEnter (to, from, next) {
       // 在渲染该组件的对应路由被 confirm 前调用
       // 不！能！获取组件实例 `this`
       // 因为当钩子执行前，组件实例还没被创建
-      next(vm => {
-        var User = Bmob.User
-        var query = new Bmob.Query(User)
-        query.get('swrMKKKc', {
-          success: function (object) {
-            // The object was retrieved successfully.
-            console.log(object.get('username'))
-          },
-          error: function (object, error) {
-            console.error(error)
-          }
-        })
+      let TreatmentRecord = Bmob.Object.extend('TreatmentBean')
+
+      let query = new Bmob.Query(TreatmentRecord)
+      query.equalTo('doctor', Bmob.User.current())
+      query.include('patient')
+      query.include('doctor')
+
+      query.find({
+        success: function (results) {
+          next(vm => {
+            console.log('共查询到 ' + results.length + ' 条记录.')
+            vm.treatmentRecords = results
+            vm.getDetail(results[0])
+          })
+        },
+        error: function (error) {
+          console.log(error.message)
+        }
       })
     }
   }
@@ -226,5 +254,9 @@
 
   .keeper-list__item_font {
     font-size: small;
+  }
+  .keeper-list__item_font:hover {
+    background: rgba(0,0,0,0.4);
+    cursor: pointer;
   }
 </style>

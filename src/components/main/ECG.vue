@@ -1,5 +1,6 @@
 <template>
   <div class="mdl-grid content">
+    <!-- side panel -->
     <my-card class='mdl-card mdl-shadow--2dp mdl-cell mdl-cell--12-col'>
       <div slot="title" class="mdl-card__title" style="background:#00ACC1;">
         <h2 class="mdl-card__title-text keeper-title mdl-color-text--white">心电图测量数据</h2>
@@ -8,8 +9,46 @@
       </div>
       <div slot="supporting-text">
       </div>
-      <div slot="actions" class="mdl-card__actions mdl-card--border">
-        <div id="container" class="show-chart"></div>
+      <div slot="actions" class="mdl-card__actions mdl-card--border mdl-grid" style="padding:0px;">
+        <div class="mdl-cell--3-col mdl-cell--8-col-tablet mdl-color--grey-100">
+          <div style="text-align:center;">
+            <h4>心电监测记录</h4>
+          </div>
+          <hr>
+          <ul class="mdl-list">
+            <li class="mdl-list__item router-link-active">
+              <a href="is-active">
+                  2016/10/16&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;14:56&nbsp;>
+                </a>
+            </li>
+            <li class="mdl-list__item">
+              <a href="is-active">
+                2016/10/16&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;15:02&nbsp;>
+                </a>
+            </li>
+            <li class="mdl-list__item">
+              <a href="is-active">
+                2016/10/16&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;15:14&nbsp;>
+                </a>
+            </li>
+            <li class="mdl-list__item">
+              <a href="is-active">
+                2016/10/16&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;15:27&nbsp;>
+                </a>
+            </li>
+            <li class="mdl-list__item">
+              <a href="is-active">
+                2016/10/16&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;15:33&nbsp;>
+                </a>
+            </li>
+            <li class="mdl-list__item">
+              <a href="is-active">
+                2016/10/16&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;15:41&nbsp;>
+                </a>
+            </li>
+          </ul>
+        </div>
+        <div id="container" class="show-chart mdl-cell mdl-cell--9-col"></div>
       </div>
     </my-card>
   </div>
@@ -23,7 +62,7 @@
     components: {
       'my-card': Card
     },
-    created () {
+    mounted () {
         // 组件创建完后获取数据，
         // 此时 data 已经被 observed 了
       this.drawECG()
@@ -80,6 +119,17 @@
 </script>
 
 <style scoped>
+.router-link-active {
+  color: #fff;
+  background: #00ACC1;
+}
+.router-link-active > a {
+  color: #fff;
+}
+a {
+  text-decoration: none;
+  color: #00ACC1;
+}
 .keeper-title {
   padding-left: 15px;
   border-left: 5px solid #00ACC1;
