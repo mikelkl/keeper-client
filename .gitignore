@@ -8,3 +8,5 @@ selenium-debug.log
 
 # IDEA
 .idea
+
+static/js/private.js
