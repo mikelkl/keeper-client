@@ -164,11 +164,11 @@
     border-width: 3px;
     border-style: solid;
     border-color: rgba(0, 0, 0, 0.1);
-    transition: 0.3s;
+    transition: 0.15s cubic-bezier(0.4, 0.0, 0.6, 1);
   }
   .login-btn:hover {
     color: rgb(63,81,181);
     border-color: rgb(63,81,181);
-    transition: 0.3s;
+    transition: 0.15s cubic-bezier(0.4, 0.0, 0.6, 1);
   }
 </style>

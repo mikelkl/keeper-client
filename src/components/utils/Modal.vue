@@ -40,7 +40,7 @@
   height: 100%;
   background-color: rgba(0, 0, 0, .5);
   display: table;
-  transition: opacity .3s ease;
+  transition: opacity .3s cubic-bezier(0.4, 0.0, 0.6, 1);
 }
 
 .modal-wrapper {
@@ -55,7 +55,7 @@
   background-color: #fff;
   border-radius: 2px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, .33);
-  transition: all .3s ease;
+  transition: all .3s cubic-bezier(0.4, 0.0, 0.6, 1);
   font-family: Helvetica, Arial, sans-serif;
 }
 

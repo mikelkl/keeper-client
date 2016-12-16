@@ -193,12 +193,12 @@
     border: 1px solid #b0bec5;
     color: #b0bec5;
     background-color: transparent;
-    transition: .3s;
+    transition: .3s cubic-bezier(0.4, 0.0, 0.6, 1);
   }
 
   .big-btn:hover {
     background-color: rgba(13, 121, 209, .06);
-    transition: .3s
+    transition: .3s cubic-bezier(0.4, 0.0, 0.6, 1);
   }
 
   .mask {
@@ -217,7 +217,7 @@
 
   .fade-enter-active,
   .fade-leave-active {
-    transition: opacity .5s
+    transition: opacity .5s cubic-bezier(0.4, 0.0, 0.6, 1);
   }
 
   .fade-enter,
