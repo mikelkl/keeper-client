@@ -154,7 +154,8 @@
 /* Enter and leave animations can use different */
 /* durations and timing functions.              */
 .component-fade-enter-active, .component-fade-leave-active {
-  transition: opacity .3s cubic-bezier(0.4, 0.0, 0.6, 1);
+  /*Deceleration curve*/
+  transition: opacity .3s cubic-bezier(0.0, 0.0, 0.2, 1);
 }
 .component-fade-enter, .component-fade-leave-active {
   opacity: 0;

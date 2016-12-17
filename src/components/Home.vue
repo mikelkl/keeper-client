@@ -243,14 +243,15 @@
   visibility:hidden;
 }
 circle {
-  /*Standard curve*/
-  transition: stroke-dasharray .2s cubic-bezier(0.4, 0.0, 0.2, 1);
+  /*Deceleration curve*/
+  transition: stroke-dasharray .2s cubic-bezier(0.0, 0.0, 0.2, 1);
 }
 
 .horizon-anim {
   visibility:visible !important;
   position: relative;
-  animation: horizon .2s cubic-bezier(0.4, 0.0, 0.2, 1);
+  /*Deceleration curve*/
+  animation: horizon .2s cubic-bezier(0.0, 0.0, 0.2, 1);
 }
 @keyframes horizon {
   0% {
@@ -311,12 +312,12 @@ circle {
   .intro .icon:hover {
     border-radius: 38px;
     border-color: #ff8f00;
-    transition: .15s cubic-bezier(0.4, 0.0, 0.6, 1);
+    transition: .15s;
   }
 
   .intro .icon:hover g g path {
     fill: #fff;
-    transition: .15s cubic-bezier(0.4, 0.0, 0.6, 1);
+    transition: .15s;
   }
 
   .intro .icon {
@@ -324,11 +325,11 @@ circle {
     height: 28px;
     padding: 24px;
     border: 1px solid #fff;
-    transition: .15s cubic-bezier(0.4, 0.0, 0.6, 1);
+    transition: .15s;
   }
 
   .intro .icon g g path {
-    transition: .15s cubic-bezier(0.4, 0.0, 0.6, 1);
+    transition: .15s;
   }
 
   .mdl-mega-footer__bottom-section .icon {
@@ -369,13 +370,13 @@ circle {
     padding: 0px 36px;
     border: 1px solid #ff8f00;
     background-color: transparent;
-    transition: .15s cubic-bezier(0.4, 0.0, 0.6, 1);
+    transition: .15s;
   }
 
   .big-btn:hover {
     background-color: #ff8f00;
     color: #fff !important;
-    transition: .15s cubic-bezier(0.4, 0.0, 0.6, 1);
+    transition: .15s;
   }
 
   .img-above {

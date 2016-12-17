@@ -157,6 +157,9 @@
     border: 4px solid #fff;
     border-radius: 8px;
   }
+  .avatar-wrapper:hover {
+    cursor: pointer;
+  }
 
   .user-text-info-group {
     margin-left: 192px;
@@ -193,12 +196,12 @@
     border: 1px solid #b0bec5;
     color: #b0bec5;
     background-color: transparent;
-    transition: .3s cubic-bezier(0.4, 0.0, 0.6, 1);
+    transition: .2s;
   }
 
   .big-btn:hover {
     background-color: rgba(13, 121, 209, .06);
-    transition: .3s cubic-bezier(0.4, 0.0, 0.6, 1);
+    transition: .3s;
   }
 
   .mask {
@@ -217,11 +220,12 @@
 
   .fade-enter-active,
   .fade-leave-active {
-    transition: opacity .5s cubic-bezier(0.4, 0.0, 0.6, 1);
+    /*Deceleration curve*/
+    transition: opacity .2s cubic-bezier(0.0, 0.0, 0.2, 1);
   }
 
   .fade-enter,
   .fade-leave-active {
-    opacity: 0
+    opacity: 0;
   }
 </style>
