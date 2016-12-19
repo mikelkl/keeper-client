@@ -37,9 +37,9 @@
         </div>
         <div slot="supporting-text">
         </div>
-        <div slot="actions" class="mdl-card__actions mdl-card--border mdl-color-text--grey-600">
+        <div slot="actions" class="mdl-card__actions mdl-card--border">
           <img v-bind:src="headUrl" class="aid-avatar">
-          <p class="patient-name">{{ patientUsername }}</p>
+          <p class="patient-name secondary-text">{{ patientUsername }}</p>
           <ul class="mdl-list">
             <li class="mdl-list__item">
               <span class="mdl-list__item-primary-content">
@@ -74,19 +74,19 @@
           <div class="mdl-grid">
             <div class="mdl-cell mdl-cell--3-col" style="text-align:center;">
               <h4><img src="/static/images/37.png" width=50 heigth=50 class="img-rounded" alt="">就诊日期</h4>
-              <span class="text-muted">{{ currentRecord.get('date') }}</span>
+              <span class="secondary-text">{{ currentRecord.get('date') }}</span>
             </div>
             <div class="mdl-cell mdl-cell--3-col" style="text-align:center;">
               <h4><img src="/static/images/72.png" width=50 heigth=50 class="img-rounded" alt="">就诊医院</h4>
-              <span class="text-muted">四川大学华西医院</span>
+              <span class="secondary-text">四川大学华西医院</span>
             </div>
             <div class="mdl-cell mdl-cell--3-col" style="text-align:center;">
               <h4><img src="/static/images/71.png" width=50 heigth=50 class="img-rounded" alt="">就诊医生</h4>
-              <span class="text-muted">{{ currentRecord.get('doctor').get('username') }}</span>
+              <span class="secondary-text">{{ currentRecord.get('doctor').get('username') }}</span>
             </div>
             <div class="mdl-cell mdl-cell--3-col" style="text-align:center;">
               <h4><img src="/static/images/76.png" width=50 heigth=50 class="img-rounded" alt="">诊断科室</h4>
-              <span class="text-muted">{{ currentRecord.get('doctor').get('administrative') }}</span>
+              <span class="secondary-text">{{ currentRecord.get('doctor').get('administrative') }}</span>
             </div>
           </div>
           <div class="mdl-grid">
@@ -237,11 +237,6 @@
 
   .text-center {
     text-align: center;
-  }
-
-  .text-muted {
-    color: #777;
-    font-size: 1em;
   }
 
   .keeper-title {

@@ -16,21 +16,21 @@
               <p class="username">
                 {{ username }}
               </p>
-              <p class="email">
+              <p class="email hint-text">
                 {{ email }}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
                 <a href="">隐私权政策</a>
               </p>
             </div>
           </li>
           <router-link to="/manage-account" style="text-decoration: none;">
-          <li class="mdl-menu__item mdl-menu__item--full-bleed-divider">
-              <i class="material-icons menu-icon">list</i>管理账号
+          <li class="mdl-menu__item mdl-menu__item--full-bleed-divider secondary-text">
+              <i class="material-icons inactive-icon menu-icon">list</i>管理账号
           </li>
         </router-link>
-          <li class="mdl-menu__item" @click="logOut()"><i class="material-icons menu-icon">exit_to_app</i>退出</li>
+          <li class="mdl-menu__item secondary-text" @click="logOut()"><i class="material-icons inactive-icon menu-icon">exit_to_app</i>退出</li>
       </ul>
       <my-drawer v-show="showHeaderDrawer"></my-drawer>
-      <main class="mdl-layout__content mdl-color--grey-100 my-main">
+      <main class="mdl-layout__content mdl-color--grey-50 my-main">
         <my-modal v-if="showModal" @close="showModal = false">
           <h3 slot="header">添加就诊记录</h3>
           <form action="#" slot="body">

@@ -201,21 +201,31 @@
           device4.classList.add('vertical-anim')
         } else if (scrollBottom >= (ribbonHeight + servicesHeight + currentHeight / 2) && scrollBottom < (ribbonHeight + servicesHeight + currentHeight)) {
           svgs[4].classList.add('svg-anim')
+
           setTimeout(function () {
             svgs[5].classList.add('svg-anim')
           }, 150)
           setTimeout(function () {
             svgs[6].classList.add('svg-anim')
           }, 300)
-          setTimeout(function () {
-            circle1.setAttribute('stroke-dasharray', '244.92 817')
-          }, 450)
-          setTimeout(function () {
-            circle2.setAttribute('stroke-dasharray', '171.444 817')
-          }, 600)
-          setTimeout(function () {
-            circle3.setAttribute('stroke-dasharray', '546.988 817')
-          }, 750)
+
+          circle1.style = 'transition-delay:.45s;'
+          circle1.setAttribute('stroke-dasharray', '244.92 817')
+
+          circle2.style = 'transition-delay:.6s;'
+          circle2.setAttribute('stroke-dasharray', '171.444 817')
+
+          circle3.style = 'transition-delay:.75s;'
+          circle3.setAttribute('stroke-dasharray', '546.988 817')
+          // setTimeout(function () {
+          //   circle1.setAttribute('stroke-dasharray', '244.92 817')
+          // }, 450)
+          // setTimeout(function () {
+          //   circle2.setAttribute('stroke-dasharray', '171.444 817')
+          // }, 600)
+          // setTimeout(function () {
+          //   circle3.setAttribute('stroke-dasharray', '546.988 817')
+          // }, 750)
         }
       }
     }

@@ -12,7 +12,7 @@
         </div>
         <div slot="actions" class="mdl-card__actions mdl-card--border mdl-color-text--grey-600">
           <img v-bind:src="headUrl" class="aid-avatar">
-          <p class="patient-name">{{ patientUsername }}</p>
+          <p class="patient-name secondary-text">{{ patientUsername }}</p>
           <ul class="mdl-list">
             <li class="mdl-list__item">
               <span class="mdl-list__item-primary-content">
@@ -102,26 +102,26 @@
           <div class="mdl-grid bottom-border">
             <div class="mdl-cell mdl-cell--6-col text-center">
               <h5>急救地点</h5>
-              <span class="text-muted">四川省成都市双流县航空港长城路一段185号-好安逸大酒店</span>
+              <span class="text-muted secondary-text">四川省成都市双流县航空港长城路一段185号-好安逸大酒店</span>
             </div>
             <div class="mdl-cell mdl-cell--6-col text-center">
               <h5>病情诊断</h5>
-              <span class="text-muted">心肌梗死，并发性心律失常、休克或心力衰竭，体征</span>
+              <span class="text-muted secondary-text">心肌梗死，并发性心律失常、休克或心力衰竭，体征</span>
             </div>
           </div>
           <div class="mdl-grid">
             <div class="mdl-cell mdl-cell--8-col">
               <h5>病人最后一次自我描述</h5>
-              <span class="text-muted">最近半个月经常。。。心律失常的生活调理方法可以根据心律失常的诱因制定。心律失常的常见诱因有：吸烟、酗酒、过劳、紧张、激动、暴饮暴食，消化不良，感冒发烧，摄入盐过多，血钾、血镁低等。这样可以做到从本质出发，从根本上对心律失常引起的病症起到控制的作用。首先，在饮食的方面：应该细嚼慢咽，这样也有助于消化吸收，对健康有益，忌狼吞虎咽。应该少饮酒，这样不会加重心脏负担，也不会增加心肌耗氧量，喝咖啡也忌大量。其次，在运动方面：运动要适量，切不可挑战极限，多做适合自己的运动，轻松舒缓的运动，少做剧烈运动。再次，在情绪方面：要学会控制自己的情绪，尽量保持平和稳定的心态，不焦不躁，遇事懂得宽慰自己，不看过激的比赛等。 因此，为了减少或避免心律失常的发生，应当注意加强生活中饮食、运动、情绪等方面的调节与护理。更多关于诱发心律失常的生活细节请咨询我们的在线专家。</span>
+              <span class="text-muted secondary-text">最近半个月经常。。。心律失常的生活调理方法可以根据心律失常的诱因制定。心律失常的常见诱因有：吸烟、酗酒、过劳、紧张、激动、暴饮暴食，消化不良，感冒发烧，摄入盐过多，血钾、血镁低等。这样可以做到从本质出发，从根本上对心律失常引起的病症起到控制的作用。首先，在饮食的方面：应该细嚼慢咽，这样也有助于消化吸收，对健康有益，忌狼吞虎咽。应该少饮酒，这样不会加重心脏负担，也不会增加心肌耗氧量，喝咖啡也忌大量。其次，在运动方面：运动要适量，切不可挑战极限，多做适合自己的运动，轻松舒缓的运动，少做剧烈运动。再次，在情绪方面：要学会控制自己的情绪，尽量保持平和稳定的心态，不焦不躁，遇事懂得宽慰自己，不看过激的比赛等。 因此，为了减少或避免心律失常的发生，应当注意加强生活中饮食、运动、情绪等方面的调节与护理。更多关于诱发心律失常的生活细节请咨询我们的在线专家。</span>
             </div>
             <div class="mdl-cell mdl-cell--4-col">
               <div class="bottom-border">
                 <h5>心律</h5>
-                <span class="text-muted">55次/分钟</span>
+                <span class="text-muted secondary-text">55次/分钟</span>
               </div>
               <div>
                 <h5>最近一次心电图</h5>
-                <a href="" class="mdl-color-text--teal-600">201508261213.png</a>
+                <a href="">201508261213.png</a>
               </div>
             </div>
           </div>
@@ -237,7 +237,6 @@
 }
 
 .text-muted {
-  color: #777;
   font-size: 10px;
 }
 

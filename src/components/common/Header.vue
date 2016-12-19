@@ -1,13 +1,13 @@
 <template>
-  <header class="header mdl-layout__header tab-header mdl-color--white mdl-layout__header--waterfall mdl-layout__header--waterfall-hide-top">
+  <header class="header mdl-layout__header tab-header mdl-color--grey-100 mdl-layout__header--waterfall mdl-layout__header--waterfall-hide-top keeper-header-shadow">
   <!-- <header class="header mdl-layout__header tab-header mdl-color--white"> -->
-    <div class="mdl-layout__header-row mdl-color--white mdl-color-text--grey-600 my-underline">
+    <div class="mdl-layout__header-row secondary-text my-underline">
       <img src="../../assets/images/logo2.png" width="30" height="30" style="margin-right: 5px;">
-      <span class="mdl-layout-title">Keeper - 心电医疗服务云平台</span>
+      <span class="mdl-layout-title primary-text">Keeper - 心电医疗服务云平台</span>
       <div class="mdl-layout-spacer"></div>
       <div class="mdl-textfield mdl-js-textfield mdl-textfield--expandable">
         <label class="mdl-button mdl-js-button mdl-button--icon" for="search">
-          <i class="material-icons" id="search-icon">search</i>
+          <i class="material-icons inactive-icon" id="search-icon">search</i>
         </label>
         <div class="mdl-textfield__expandable-holder space-right">
           <input class="mdl-textfield__input" type="text" id="search" v-model="searchUsername" @keydown="search()">
@@ -17,13 +17,13 @@
       <div class="mdl-tooltip" data-mdl-for="search-icon">
         搜索病人
       </div>
-      <i id="notifications" class="material-icons">notifications_none</i>
+      <i id="notifications" class="material-icons inactive-icon">notifications_none</i>
       <div class="mdl-tooltip" data-mdl-for="notifications">
         You have no unread notifications
       </div>
       <button id="add-group" class="mdl-button mdl-js-button mdl-button--icon add-group space-right">
-        <i class="material-icons">add</i>
-        <i class="material-icons" style="margin-left:15px;">arrow_drop_down</i>
+        <i class="material-icons inactive-icon">add</i>
+        <i class="material-icons inactive-icon" style="margin-left:15px;">arrow_drop_down</i>
       </button>
       <div class="mdl-tooltip" data-mdl-for="add-group">
       Create new ...
@@ -43,13 +43,13 @@
       </ul> -->
     </div>
     <!-- Tabs -->
-    <div class="mdl-layout__tab-bar mdl-js-ripple-effect my-tab-bar mdl-color--white">
-      <router-link to="/treatment-record" class="mdl-layout__tab mdl-color-text--grey-600">就诊记录</router-link>
+    <div class="mdl-layout__tab-bar mdl-js-ripple-effect my-tab-bar mdl-color--grey-100">
+      <router-link to="/treatment-record" class="mdl-layout__tab secondary-text">就诊记录</router-link>
       <span v-if="$store.state.patient.currentPatient">
-        <router-link to="/ecg" class="mdl-layout__tab mdl-color-text--grey-600">心电图记录</router-link>
-        <router-link to="/aid" class="mdl-layout__tab mdl-color-text--grey-600">一键急救</router-link>
+        <router-link to="/ecg" class="mdl-layout__tab secondary-text">心电图记录</router-link>
+        <router-link to="/aid" class="mdl-layout__tab secondary-text">一键急救</router-link>
       </span>
-      <router-link to="/user-info" class="mdl-layout__tab mdl-color-text--grey-600">个人信息</router-link>
+      <router-link to="/user-info" class="mdl-layout__tab secondary-text">个人信息</router-link>
     </div>
 
   </header>
@@ -97,6 +97,9 @@
 </script>
 
 <style scoped>
+.keeper-header-shadow {
+  box-shadow: 0 2px 2px 0 rgba(0,0,0,.14), 0 3px 1px -2px rgba(0,0,0,.2), 0 1px 5px 0 rgba(0,0,0,.12);
+}
 .is-compact {
   max-height: 49px;
 }
@@ -136,7 +139,7 @@
 }
 .router-link-active {
   font-weight: 500;
-  color: #666 !important;
+  color: rgba(0, 0, 0, 0.87);
 }
 .router-link-active:after {
   height: 2px;

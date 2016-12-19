@@ -14,8 +14,7 @@ html, body {
   bottom: 19px;
 }
 .layout .mdl-layout__header .mdl-layout__drawer-button {
-  color: rgba(0,0,0,0.5);
-  background-color: transparent;
+  color: rgba(0,0,0,0.38);
 }
 .mdl-layout__drawer .avatar {
   margin-bottom: 16px;
@@ -176,4 +175,19 @@ html, body {
 .show-chart {
   /*width:100%;*/
   min-height:360px;
+}
+.primary-text {
+  color: rgba(0, 0, 0, 0.87);
+}
+.secondary-text {
+  color: rgba(0, 0, 0, 0.54);
+}
+.hint-text {
+  color: rgba(0, 0, 0, 0.38);
+}
+.inactive-icon {
+  color: rgba(0, 0, 0, 0.38);
+}
+.material-icons:active {
+  color: rgba(0, 0, 0, 0.54);
 }
