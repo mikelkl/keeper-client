@@ -2,7 +2,7 @@
   <div class="mdl-grid content">
     <!-- side panel -->
     <div class="cards mdl-cell mdl-cell--3-col mdl-cell--8-col-tablet mdl-grid">
-      <my-card class="mdl-card mdl-shadow--2dp horizon-center">
+      <my-card class="mdl-card horizon-center">
         <div slot="title" class="mdl-card__title patient-banner">
           <h2 class="mdl-card__title-text keeper-title mdl-color-text--white">病人资料</h2>
         </div>
@@ -33,7 +33,7 @@
         </div>
       </my-card>
       <div class="separator mdl-cell--1-col"></div>
-      <my-card class="options mdl-card mdl-color--teal-600 mdl-shadow--2dp">
+      <my-card class="options mdl-card mdl-color--teal-600">
         <div slot="title">
         </div>
         <div slot="media">
@@ -77,7 +77,7 @@
 
     <!-- main panel -->
     <div class="cards mdl-cell mdl-cell--9-col mdl-grid">
-      <my-card class='mdl-card mdl-shadow--2dp mdl-cell--12-col'>
+      <my-card class='mdl-card mdl-cell--12-col'>
         <div slot="title" class="mdl-card__title mdl-color--teal-600">
           <h2 class="mdl-card__title-text keeper-title mdl-color-text--white">地图显示</h2>
         </div>
@@ -90,7 +90,7 @@
         </div>
       </my-card>
       <!-- <div class="separator mdl-cell--1-col"></div> -->
-      <my-card class='mdl-card mdl-shadow--2dp mdl-cell--12-col'>
+      <my-card class='mdl-card mdl-cell--12-col'>
         <div slot="title" class="mdl-card__title">
           <h2 class="mdl-card__title-text keeper-title">详细信息</h2>
         </div>

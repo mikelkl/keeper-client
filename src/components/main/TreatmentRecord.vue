@@ -3,7 +3,7 @@
 
     <!-- side panel -->
     <div class="cards mdl-cell mdl-cell--3-col mdl-cell--8-col-tablet mdl-grid">
-      <my-card class="options mdl-card mdl-color--deep-purple-500 mdl-shadow--2dp">
+      <my-card class="options mdl-card mdl-color--deep-purple-500">
         <div slot="title">
         </div>
         <div slot="media">
@@ -29,7 +29,7 @@
         </div>
       </my-card>
       <div class="separator mdl-cell--1-col"></div>
-      <my-card class="mdl-card mdl-shadow--2dp horizon-center">
+      <my-card class="mdl-card horizon-center">
         <div slot="title" class="mdl-card__title patient-banner">
           <h2 class="mdl-card__title-text keeper-title mdl-color-text--white">病人资料</h2>
         </div>
@@ -62,7 +62,7 @@
     </div>
     <!-- main panel -->
     <div class="cards mdl-cell mdl-cell--9-col mdl-grid">
-      <my-card class='mdl-card mdl-shadow--2dp mdl-cell--12-col'>
+      <my-card class='mdl-card mdl-cell--12-col'>
         <div slot="title" class="mdl-card__title mdl-color--deep-purple-500">
           <h2 class="mdl-card__title-text keeper-title mdl-color-text--white">就诊详情</h2>
         </div>
@@ -90,7 +90,7 @@
             </div>
           </div>
           <div class="mdl-grid">
-            <table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp mdl-cell mdl-cell--12-col">
+            <table class="mdl-data-table mdl-js-data-table mdl-cell mdl-cell--12-col">
               <thead>
                 <tr>
                   <th class="mdl-data-table__cell--non-numeric">医生职称</th>
@@ -110,7 +110,7 @@
         </div>
       </my-card>
       <!-- <div class="separator mdl-cell--1-col"></div> -->
-      <my-card class='mdl-card mdl-shadow--2dp mdl-cell--12-col'>
+      <my-card class='mdl-card mdl-cell--12-col'>
         <div slot="title" class="mdl-card__title">
           <h2 class="mdl-card__title-text keeper-title">诊后随访</h2>
         </div>
@@ -119,7 +119,7 @@
         <div slot="supporting-text">
         </div>
         <div slot="actions" class="mdl-card__actions mdl-grid">
-          <table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp mdl-cell mdl-cell--12-col">
+          <table class="mdl-data-table mdl-js-data-table mdl-cell mdl-cell--12-col">
             <tbody>
               <tr v-for="(item, index) in followups">
                 <th class="mdl-data-table__cell--non-numeric">{{ item.get('date') }}</th>

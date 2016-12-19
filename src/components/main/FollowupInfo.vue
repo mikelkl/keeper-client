@@ -1,6 +1,6 @@
 <template>
   <div class="mdl-grid content">
-    <my-card class='mdl-card mdl-shadow--2dp mdl-cell mdl-cell--9-col mdl-cell--top'>
+    <my-card class='mdl-card mdl-cell mdl-cell--9-col mdl-cell--top'>
       <div slot="title" class="mdl-card__title" style="display: none;">
       </div>
       <div slot="media">
@@ -46,7 +46,7 @@
         </div>
       </div>
     </my-card>
-    <table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp mdl-cell mdl-cell--3-col mdl-cell--top">
+    <table class="mdl-data-table mdl-js-data-table mdl-cell mdl-cell--3-col mdl-cell--top">
       <tbody>
         <tr>
           <th class="mdl-data-table__cell--non-numeric">随访时间</th>

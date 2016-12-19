@@ -16,11 +16,12 @@
 }
 .spinner-move-enter-active {
   position: relative;
-  /*Sharp curve*/
-  animation: move-in .5s cubic-bezier(0.4, 0.0, 0.6, 1);
+  /*Deceleration curve*/
+  animation: move-in .5s cubic-bezier(0.0, 0.0, 0.2, 1);
 }
 .spinner-move-leave-active {
   position: relative;
+  /*Sharp curve*/
   animation: move-out .5s cubic-bezier(0.4, 0.0, 0.6, 1);
 }
 @keyframes move-in {

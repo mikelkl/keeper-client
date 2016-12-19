@@ -1,5 +1,5 @@
 <template>
-  <div class="mdl-card mdl-shadow--4dp">
+  <div class="mdl-card mdl-shadow--2dp">
     <slot name="title">
       <div class="mdl-card__title">
         <h2 class="mdl-card__title-text">Auckland Sky Tower<br>Auckland, New Zealand</h2>
