@@ -18,11 +18,11 @@ const Home = resolve => require(['./components/Home'], resolve)
 const Login = resolve => require(['./components/login/Login'], resolve)
 
 const routes = [{
-  path: '/treatment-record',
+  path: '/treatment-record/detail',
   name: '就诊记录',
   component: TreatmentRecord
 }, {
-  path: '/user-info',
+  path: '/user-info/user-profile',
   name: '个人信息',
   component: UserInfo
 }, {
@@ -34,7 +34,7 @@ const routes = [{
   name: '心电图记录',
   component: ECG
 }, {
-  path: '/followup-info/:id',
+  path: '/treatment-record/followup-info/:id',
   name: 'followup-info',
   component: FollowupInfo,
   children: [
@@ -45,7 +45,7 @@ const routes = [{
     }
   ]
 }, {
-  path: '/manage-account',
+  path: '/user-info/manage-account',
   name: '管理账户',
   component: ManageAccount
 }, {
@@ -56,6 +56,15 @@ const routes = [{
   path: '/home',
   name: 'home',
   component: Home
+}, {
+  path: '/treatment-record',
+  redirect: '/treatment-record/detail'
+}, {
+  path: '/treatment-record/followup-info',
+  redirect: '/treatment-record/followup-info/-1'
+}, {
+  path: '/user-info',
+  redirect: '/user-info/user-profile'
 }, {
   // 重定向任意未匹配路径到 /home
   path: '*',

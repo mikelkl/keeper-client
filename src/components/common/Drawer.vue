@@ -43,11 +43,11 @@
       hide: function (event) {
         let target = event.target
         if (target.tagName === 'A') {
-          // if (window.innerWidth < 1025) {
-          let btn = document.querySelector('.mdl-layout__drawer-button')
-          // console.log(target.tagName)
-          btn.click()
-          // }
+          if (window.innerWidth < 1025) {
+            let btn = document.querySelector('.mdl-layout__drawer-button')
+            // console.log(target.tagName)
+            btn.click()
+          }
         } else {
           return
         }

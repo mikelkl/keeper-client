@@ -15,6 +15,7 @@ html, body {
 }
 .layout .mdl-layout__header .mdl-layout__drawer-button {
   color: rgba(0,0,0,0.38);
+  background-color: transparent;
 }
 .mdl-layout__drawer .avatar {
   margin-bottom: 16px;
@@ -106,14 +107,15 @@ html, body {
 .content {
   max-width: 1200px;
   /*min-height: 540px;*/
-}
-
-.common-content {
   margin-left: 240px;
 }
 
+/*.common-content {
+  margin-left: 240px;
+}*/
+
 @media screen and (max-width: 1024px) {
-  .common-content {
+  .content {
     margin-left: 0px;
   }
 }
@@ -190,4 +192,9 @@ html, body {
 }
 .material-icons:active {
   color: rgba(0, 0, 0, 0.54);
+}
+
+.mdl-button--fab {
+  float: right;
+  margin: 0 16px 16px 0;
 }

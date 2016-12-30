@@ -1,13 +1,13 @@
 <template>
   <div id="app">
-    <div class="layout mdl-layout mdl-js-layout mdl-layout--fixed-header">
-    <!-- <div class="layout mdl-layout mdl-js-layout mdl-layout--fixed-drawer mdl-layout--fixed-header"> -->
+    <!-- <div class="layout mdl-layout mdl-js-layout mdl-layout--fixed-header"> -->
+    <div class="layout mdl-layout mdl-js-layout mdl-layout--fixed-drawer mdl-layout--fixed-header">
       <my-header v-show="showHeaderDrawer"></my-header>
-      <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect"
-          for="add-group">
+      <!-- <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect"
+          for="add-group"> -->
         <!-- emit event on the App.vue -->
-        <li class="mdl-menu__item" @click="showModal = true">New record</li>
-      </ul>
+        <!-- <li class="mdl-menu__item" @click="showModal = true">New record</li>
+      </ul> -->
       <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect"
           for="s-avatar">
           <li class="mdl-menu__item mdl-menu__item--full-bleed-divider wide-menu__item" disabled>
@@ -22,7 +22,7 @@
               </p>
             </div>
           </li>
-          <router-link to="/manage-account" style="text-decoration: none;">
+          <router-link to="/user-info/manage-account" style="text-decoration: none;">
           <li class="mdl-menu__item mdl-menu__item--full-bleed-divider secondary-text">
               <i class="material-icons inactive-icon menu-icon">list</i>管理账号
           </li>
@@ -31,7 +31,15 @@
       </ul>
       <my-drawer v-show="showHeaderDrawer"></my-drawer>
       <main class="mdl-layout__content mdl-color--grey-50 my-main">
-        <my-modal v-if="showModal" @close="showModal = false">
+        <my-modal @close="$store.commit('SET_MODAL', false)">
+          <div slot="header" class="mdl-color-text--red-500">
+            {{ $store.state.doc.modal.message.title }}
+          </div>
+          <div slot="body">
+            {{ $store.state.doc.modal.message.body }}
+          </div>
+        </my-modal>
+        <!-- <my-modal v-if="showModal" @close="showModal = false">
           <h3 slot="header">添加就诊记录</h3>
           <form action="#" slot="body">
             <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" v-bind:class="{'is-upgraded': showText1, 'is-focused': showText1}">
@@ -59,7 +67,7 @@
           </form>
           <div slot="footer">
           </div>
-        </my-modal>
+        </my-modal> -->
         <my-loading></my-loading>
         <!-- 下一级视图 -->
         <transition name="component-fade" mode="out-in">
@@ -97,7 +105,7 @@
         headUrl: Bmob.User.current() ? Bmob.User.current().get('headUrl') : '/static/images/user.jpg',
         username: Bmob.User.current() ? Bmob.User.current().get('username') : '请先登录',
         email: Bmob.User.current() ? Bmob.User.current().get('email') : 'hello@example.com',
-        showModal: false,
+        // showModal: false,
         showText1: false,
         showText2: false,
         showText3: false,
