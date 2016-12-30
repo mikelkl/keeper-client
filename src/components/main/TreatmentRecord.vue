@@ -1,6 +1,5 @@
 <template>
   <div class="mdl-grid content">
-
     <!-- side panel -->
     <div class="cards mdl-cell mdl-cell--3-col mdl-cell--8-col-tablet mdl-grid">
       <my-card class="options mdl-card mdl-color--deep-purple-500">
@@ -37,9 +36,9 @@
         </div>
         <div slot="supporting-text">
         </div>
-        <div slot="actions" class="mdl-card__actions mdl-card--border">
+        <div slot="actions" class="mdl-card__actions mdl-card--border mdl-color-text--grey-600">
           <img v-bind:src="headUrl" class="aid-avatar">
-          <p class="patient-name secondary-text">{{ patientUsername }}</p>
+          <p class="patient-name">{{ patientUsername }}</p>
           <ul class="mdl-list">
             <li class="mdl-list__item">
               <span class="mdl-list__item-primary-content">
@@ -74,19 +73,19 @@
           <div class="mdl-grid">
             <div class="mdl-cell mdl-cell--3-col" style="text-align:center;">
               <h4><img src="/static/images/37.png" width=50 heigth=50 class="img-rounded" alt="">就诊日期</h4>
-              <span class="secondary-text">{{ currentRecord.get('date') }}</span>
+              <span class="text-muted">{{ currentRecord.get('date') }}</span>
             </div>
             <div class="mdl-cell mdl-cell--3-col" style="text-align:center;">
               <h4><img src="/static/images/72.png" width=50 heigth=50 class="img-rounded" alt="">就诊医院</h4>
-              <span class="secondary-text">四川大学华西医院</span>
+              <span class="text-muted">四川大学华西医院</span>
             </div>
             <div class="mdl-cell mdl-cell--3-col" style="text-align:center;">
               <h4><img src="/static/images/71.png" width=50 heigth=50 class="img-rounded" alt="">就诊医生</h4>
-              <span class="secondary-text">{{ currentRecord.get('doctor').get('username') }}</span>
+              <span class="text-muted">{{ currentRecord.get('doctor').get('username') }}</span>
             </div>
             <div class="mdl-cell mdl-cell--3-col" style="text-align:center;">
               <h4><img src="/static/images/76.png" width=50 heigth=50 class="img-rounded" alt="">诊断科室</h4>
-              <span class="secondary-text">{{ currentRecord.get('doctor').get('administrative') }}</span>
+              <span class="text-muted">{{ currentRecord.get('doctor').get('administrative') }}</span>
             </div>
           </div>
           <div class="mdl-grid">
@@ -107,6 +106,9 @@
               </tbody>
             </table>
           </div>
+          <button class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored">
+            <i class="material-icons">add</i>
+          </button>
         </div>
       </my-card>
       <!-- <div class="separator mdl-cell--1-col"></div> -->
@@ -137,7 +139,7 @@
 
 <script>
   import Card from '../utils/Card'
-  import * as types from '../../vuex/mutation_types'
+  import { SET_FOLLOWUP, SET_MODAL, SET_MODAL_MSG } from '../../vuex/mutation_types'
 
   export default {
     components: {
@@ -176,7 +178,7 @@
           success: function (followups) {
             console.info('共查询到 ' + followups.length + ' Followup条记录.')
             that.followups = followups
-            that.$store.commit(types.SET_FOLLOWUP, followups)
+            that.$store.commit([SET_FOLLOWUP], followups)
           },
           error: function (error) {
             console.log(error.message)
@@ -207,6 +209,20 @@
           console.log(error.message)
         }
       })
+    },
+    beforeRouteLeave (to, from, next) {
+    // 导航离开该组件的对应路由时调用
+    // 可以访问组件实例 `this`
+      if (to.path === '/treatment-record/followup-info/-1') {
+        this.$store.commit([SET_MODAL], true)
+        this.$store.commit([SET_MODAL_MSG], {
+          title: '警告',
+          body: '请先选中一条诊后随访！'
+        })
+        next(false)
+      } else {
+        next()
+      }
     }
   }
 </script>
@@ -237,6 +253,11 @@
 
   .text-center {
     text-align: center;
+  }
+
+  .text-muted {
+    color: #777;
+    font-size: 1em;
   }
 
   .keeper-title {

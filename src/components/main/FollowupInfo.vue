@@ -102,7 +102,6 @@
 </template>
 
 <script>
-  import { SET_TIP } from '../../vuex/mutation_types.js'
   import Card from '../utils/Card'
   import Chart from './Chart'
 
@@ -114,16 +113,24 @@
     data () {
       return {
         index: this.$route.params.id,
-        linkAST: '/followup-info/' + this.$route.params.id + '/chart/AST',
-        linkALT: '/followup-info/' + this.$route.params.id + '/chart/ALT',
-        linkCK: '/followup-info/' + this.$route.params.id + '/chart/CK',
-        linkCKMB: '/followup-info/' + this.$route.params.id + '/chart/ckMB',
-        linkCTN: '/followup-info/' + this.$route.params.id + '/chart/CTN',
-        linkHBDH: '/followup-info/' + this.$route.params.id + '/chart/HBDH',
-        linkMB: '/followup-info/' + this.$route.params.id + '/chart/MB',
-        linkNEU: '/followup-info/' + this.$route.params.id + '/chart/NEU',
+        linkAST: '/treatment-record/followup-info/' + this.$route.params.id + '/chart/AST',
+        linkALT: '/treatment-record/followup-info/' + this.$route.params.id + '/chart/ALT',
+        linkCK: '/treatment-record/followup-info/' + this.$route.params.id + '/chart/CK',
+        linkCKMB: '/treatment-record/followup-info/' + this.$route.params.id + '/chart/ckMB',
+        linkCTN: '/treatment-record/followup-info/' + this.$route.params.id + '/chart/CTN',
+        linkHBDH: '/treatment-record/followup-info/' + this.$route.params.id + '/chart/HBDH',
+        linkMB: '/treatment-record/followup-info/' + this.$route.params.id + '/chart/MB',
+        linkNEU: '/treatment-record/followup-info/' + this.$route.params.id + '/chart/NEU',
         followup: this.$store.state.followup.currentFollowupList[this.$route.params.id],
         collection: []
+      }
+    },
+    beforeRouteEnter (to, from, next) {
+      if (to.path === '/treatment-record/followup-info/-1') {
+        alert('请先选中一条诊后随访！')
+        next(false)
+      } else {
+        next()
       }
     },
     methods: {

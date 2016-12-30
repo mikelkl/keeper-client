@@ -1,26 +1,34 @@
 <template>
   <transition name="modal">
-    <div @click="$emit('close')" class="modal-mask">
+    <div v-if="$store.state.doc.modal.show" @click="$emit('close')" class="modal-mask">
       <div class="modal-wrapper">
         <div @click.stop class="modal-container">
 
-          <div class="modal-header">
-            <slot name="header">
-              default header
-            </slot>
-          </div>
+          <div class="modal-main">
 
-          <div class="modal-body">
-            <slot name="body">
-              default body
-            </slot>
+            <div class="modal-header">
+              <h5>
+                <slot name="header">
+                  default header
+                </slot>
+              </h5>
+            </div>
+
+            <div class="modal-body">
+              <slot name="body">
+                default body
+              </slot>
+            </div>
+
           </div>
 
           <div class="modal-footer">
             <slot name="footer">
-              default footer
-              <button class="modal-default-button" @click="$emit('close')">
-                OK
+              <button class="mdl-button mdl-js-button mdl-button--primary" @click="$emit('close')">
+                DISAGREE
+              </button>
+              <button class="mdl-button mdl-js-button mdl-button--primary">
+                AGREE
               </button>
             </slot>
           </div>
@@ -52,26 +60,30 @@
 .modal-container {
   width: 300px;
   margin: 0px auto;
-  padding: 20px 30px;
   background-color: #fff;
   border-radius: 2px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, .33);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, .33);
   /*Sharp curve*/
   transition: all .3s cubic-bezier(0.4, 0.0, 0.6, 1);
   font-family: Helvetica, Arial, sans-serif;
 }
 
-.modal-header h3 {
+.modal-main {
+  padding: 24px;
+}
+
+.modal-footer {
+  padding: 8px;
+  text-align: right;
+}
+
+.modal-header h5 {
   margin-top: 0;
-  color: #42b983;
+  opacity: 0.87;
 }
 
 .modal-body {
-  margin: 20px 0;
-}
-
-.modal-default-button {
-  float: right;
+  margin: 20px 0 0 0;
 }
 
 /*
