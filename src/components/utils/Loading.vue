@@ -20,9 +20,10 @@
   animation: move-in .5s cubic-bezier(0.0, 0.0, 0.2, 1);
 }
 .spinner-move-leave-active {
-  position: relative;
+  /*position: relative;*/
   /*Sharp curve*/
-  animation: move-out .5s cubic-bezier(0.4, 0.0, 0.6, 1);
+  /*animation: move-out .5s cubic-bezier(0.4, 0.0, 0.6, 1);*/
+  transition: all .3s cubic-bezier(0.4, 0.0, 0.6, 1);
 }
 @keyframes move-in {
   0% {
@@ -35,7 +36,7 @@
     top: 0px;
   }
 }
-@keyframes move-out {
+/*@keyframes move-out {
   0% {
     top: 0px;
   }
@@ -45,7 +46,7 @@
   100% {
     top: -50px;
   }
-}
+}*/
 
 .loading {
   width: 30px;
