@@ -27,7 +27,7 @@
               <button class="mdl-button mdl-js-button mdl-button--primary" @click="$emit('close')">
                 DISAGREE
               </button>
-              <button class="mdl-button mdl-js-button mdl-button--primary">
+              <button class="mdl-button mdl-js-button mdl-button--primary" style="margin-left: 8px;">
                 AGREE
               </button>
             </slot>

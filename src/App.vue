@@ -32,10 +32,10 @@
       <my-drawer v-show="showHeaderDrawer"></my-drawer>
       <main class="mdl-layout__content mdl-color--grey-50 my-main">
         <my-modal @close="$store.commit('SET_MODAL', false)">
-          <div slot="header" class="mdl-color-text--red-500">
+          <div slot="header">
             {{ $store.state.doc.modal.message.title }}
           </div>
-          <div slot="body">
+          <div slot="body" class="secondary-text">
             {{ $store.state.doc.modal.message.body }}
           </div>
         </my-modal>
