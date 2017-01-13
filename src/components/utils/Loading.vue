@@ -22,8 +22,9 @@
 .spinner-move-leave-active {
   /*position: relative;*/
   /*Sharp curve*/
-  /*animation: move-out .5s cubic-bezier(0.4, 0.0, 0.6, 1);*/
-  transition: all .3s cubic-bezier(0.4, 0.0, 0.6, 1);
+  animation: fade-out .3s cubic-bezier(0.4, 0.0, 0.6, 1);
+  /*transition: opacity .3s cubic-bezier(0.4, 0.0, 0.6, 1);*/
+
 }
 @keyframes move-in {
   0% {
@@ -36,17 +37,14 @@
     top: 0px;
   }
 }
-/*@keyframes move-out {
+@keyframes fade-out {
   0% {
-    top: 0px;
-  }
-  50% {
-    top: 10px;
+    opacity: 1;
   }
   100% {
-    top: -50px;
+    opacity: 0;
   }
-}*/
+}
 
 .loading {
   width: 30px;
