@@ -69,46 +69,52 @@
         </div>
         <div slot="supporting-text">
         </div>
-        <div slot="actions" class="mdl-card__actions mdl-card--border">
-          <div class="mdl-grid">
-            <div class="mdl-cell mdl-cell--3-col" style="text-align:center;">
-              <h4><img src="/static/images/37.png" width=50 heigth=50 class="img-rounded" alt="">就诊日期</h4>
-              <span class="text-muted">{{ currentRecord.get('date') }}</span>
+        <div slot="actions">
+          <div v-if="currentRecord" class="mdl-card__actions mdl-card--border">
+            <div class="mdl-grid">
+              <div class="mdl-cell mdl-cell--3-col" style="text-align:center;">
+                <h4><img src="/static/images/37.png" width=50 heigth=50 class="img-rounded" alt="">就诊日期</h4>
+                <span class="text-muted">{{ currentRecord.get('date') }}</span>
+              </div>
+              <div class="mdl-cell mdl-cell--3-col" style="text-align:center;">
+                <h4><img src="/static/images/72.png" width=50 heigth=50 class="img-rounded" alt="">就诊医院</h4>
+                <span class="text-muted">四川大学华西医院</span>
+              </div>
+              <div class="mdl-cell mdl-cell--3-col" style="text-align:center;">
+                <h4><img src="/static/images/71.png" width=50 heigth=50 class="img-rounded" alt="">就诊医生</h4>
+                <span class="text-muted">{{ currentRecord.get('doctor').get('username') }}</span>
+              </div>
+              <div class="mdl-cell mdl-cell--3-col" style="text-align:center;">
+                <h4><img src="/static/images/76.png" width=50 heigth=50 class="img-rounded" alt="">诊断科室</h4>
+                <span class="text-muted">{{ currentRecord.get('doctor').get('administrative') }}</span>
+              </div>
             </div>
-            <div class="mdl-cell mdl-cell--3-col" style="text-align:center;">
-              <h4><img src="/static/images/72.png" width=50 heigth=50 class="img-rounded" alt="">就诊医院</h4>
-              <span class="text-muted">四川大学华西医院</span>
-            </div>
-            <div class="mdl-cell mdl-cell--3-col" style="text-align:center;">
-              <h4><img src="/static/images/71.png" width=50 heigth=50 class="img-rounded" alt="">就诊医生</h4>
-              <span class="text-muted">{{ currentRecord.get('doctor').get('username') }}</span>
-            </div>
-            <div class="mdl-cell mdl-cell--3-col" style="text-align:center;">
-              <h4><img src="/static/images/76.png" width=50 heigth=50 class="img-rounded" alt="">诊断科室</h4>
-              <span class="text-muted">{{ currentRecord.get('doctor').get('administrative') }}</span>
+            <div class="mdl-grid">
+              <table class="mdl-data-table mdl-js-data-table mdl-cell mdl-cell--12-col">
+                <thead>
+                  <tr>
+                    <th class="mdl-data-table__cell--non-numeric">医生职称</th>
+                    <th class="mdl-data-table__cell--non-numeric">病情诊断</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="mdl-data-table__cell--non-numeric">{{ currentRecord.get('doctor').get('professional') }}</td>
+                    <td class="mdl-data-table__cell--non-numeric" style="white-space: normal;">
+                      {{ currentRecord.get('treatmentReason') }}
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
             </div>
           </div>
-          <div class="mdl-grid">
-            <table class="mdl-data-table mdl-js-data-table mdl-cell mdl-cell--12-col">
-              <thead>
-                <tr>
-                  <th class="mdl-data-table__cell--non-numeric">医生职称</th>
-                  <th class="mdl-data-table__cell--non-numeric">病情诊断</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td class="mdl-data-table__cell--non-numeric">{{ currentRecord.get('doctor').get('professional') }}</td>
-                  <td class="mdl-data-table__cell--non-numeric" style="white-space: normal;">
-                    {{ currentRecord.get('treatmentReason') }}
-                  </td>
-                </tr>
-              </tbody>
-            </table>
+          <div v-else class="mdl-color--deep-purple-500 keeper-empty-state" style="height: 400px;">
+            <h5 class="mdl-color-text--white" style="align-self: center;opacity:0.87;">请先选择一项记录！</h5>
+            <img src="/static/images/doctor.png" alt="" style="align-self: center;height:250px;">
+            <button class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored">
+              <i class="material-icons">add</i>
+            </button>
           </div>
-          <button class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored">
-            <i class="material-icons">add</i>
-          </button>
         </div>
       </my-card>
       <!-- <div class="separator mdl-cell--1-col"></div> -->
@@ -202,7 +208,7 @@
           next(vm => {
             console.log('共查询到 ' + results.length + ' 条记录.')
             vm.treatmentRecords = results
-            vm.getDetail(results[0])
+            // vm.getDetail(results[0])
           })
         },
         error: function (error) {
@@ -274,5 +280,11 @@
   .keeper-list__item_font:hover {
     background: rgba(0,0,0,0.4);
     cursor: pointer;
+  }
+  .keeper-empty-state {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: flex-end;
   }
 </style>
