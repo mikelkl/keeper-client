@@ -112,7 +112,7 @@
                   }
                 })
 
-                that.$router.push('/ecg')
+                that.$router.push('/treatment-record')
               } else {
                 that.$store.commit(types.SET_TIP, {
                   message: '只支持搜索病人!',

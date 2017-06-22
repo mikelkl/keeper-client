@@ -67,15 +67,16 @@
         ECGs: this.$store.state.patient.currentPatient ? this.$store.state.patient.currentPatient.get('ecgRecords') : ''
       }
     },
-    mounted () {
-      // 组件创建完后获取数据，
-      // 此时 data 已经被 observed 了
-      this.drawECG()
-    },
+    // mounted () {
+    //   // 组件创建完后获取数据，
+    //   // 此时 data 已经被 observed 了
+    //   this.drawECG('2.txt')
+    // },
     methods: {
-      drawECG: function () {
+      drawECG: function (ecg) {
         this.$store.commit('SET_LOADING', true)
-        this.$http.get('/static/ecg/2.txt')
+        let ecgUrl = '/static/ecg/' + ecg
+        this.$http.get(ecgUrl)
           // this.$http.get('http://localhost:5000/api/v1.0/record/2.txt/1')
           .then(function (ret) {
             this.$store.commit('SET_LOADING', false)
