@@ -99,7 +99,7 @@
 
                 let query = new Bmob.Query(TreatmentRecord)
                 query.equalTo('patient', user)
-                query.include('patient')
+                // query.include('patient')
                 // query.include('doctor')
 
                 query.find({
@@ -115,7 +115,7 @@
                   }
                 })
 
-                that.$router.push('/treatment-record')
+                that.$router.push('/ecg')
               } else {
                 that.$store.commit(types.SET_TIP, {
                   message: '只支持搜索病人!',

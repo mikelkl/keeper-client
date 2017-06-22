@@ -16,12 +16,12 @@
           </div>
           <hr>
           <ul class="mdl-list">
-            <li class="mdl-list__item router-link-active">
+            <li @click="drawECG(ecg)" v-for="ecg in ECGs" class="mdl-list__item">
               <a href="is-active">
-                  2016/10/16&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;14:56&nbsp;>
-                </a>
+                {{ ecg }}
+              </a>
             </li>
-            <li class="mdl-list__item">
+            <!--<li class="mdl-list__item">
               <a href="is-active">
                 2016/10/16&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;15:02&nbsp;>
                 </a>
@@ -45,7 +45,7 @@
               <a href="is-active">
                 2016/10/16&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;15:41&nbsp;>
                 </a>
-            </li>
+            </li>-->
           </ul>
         </div>
         <div id="container" class="show-chart mdl-cell mdl-cell--9-col"></div>
@@ -61,6 +61,11 @@
   export default {
     components: {
       'my-card': Card
+    },
+    data () {
+      return {
+        ECGs: this.$store.state.patient.currentPatient ? this.$store.state.patient.currentPatient.get('ecgRecords') : ''
+      }
     },
     mounted () {
       // 组件创建完后获取数据，
