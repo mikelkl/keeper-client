@@ -104,11 +104,8 @@
 
                 query.find({
                   success: function (results) {
-                    next(vm => {
-                      console.log('共查询到 ' + results.length + ' 条记录.')
-                      // vm.treatmentRecords = results
-                      that.$store.commit(types.SET_TREATMENT_RECORDS, results)
-                    })
+                    console.log('共查询到 ' + results.length + ' 条记录.')
+                    that.$store.commit(types.SET_TREATMENT_RECORDS, results)
                   },
                   error: function (error) {
                     console.log(error.message)
