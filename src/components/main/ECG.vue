@@ -63,77 +63,82 @@
       'my-card': Card
     },
     mounted () {
-        // 组件创建完后获取数据，
-        // 此时 data 已经被 observed 了
+      // 组件创建完后获取数据，
+      // 此时 data 已经被 observed 了
       this.drawECG()
     },
     methods: {
       drawECG: function () {
         this.$store.commit('SET_LOADING', true)
-        this.$http.get('http://localhost:5000/api/v1.0/record/2.txt/1')
-        .then(function (ret) {
-          this.$store.commit('SET_LOADING', false)
-          console.info(Highcharts)
-          var chart = new Highcharts.Chart({
-            chart: {
-              renderTo: 'container',
-              type: 'line'
-            },
-            title: {
-              text: '患者心电图'
-            },
-            xAxis: {
-              // 一页图里最大显示的横坐标
-              max: 1200,
-              min: 0
-            },
-            yAxis: {
+        this.$http.get('/static/ecg/2.txt')
+          // this.$http.get('http://localhost:5000/api/v1.0/record/2.txt/1')
+          .then(function (ret) {
+            this.$store.commit('SET_LOADING', false)
+            var chart = new Highcharts.Chart({
+              chart: {
+                renderTo: 'container',
+                type: 'line'
+              },
               title: {
-                text: '值'
-              }
-            },
-            credits: {
-              enabled: false
-            },
-            // 设置滚动条
-            scrollbar: {
-              enabled: true
-            },
-            series: [{
-              data: ret.data.data,
-              name: '测量数据'
-            }]
+                text: '患者心电图'
+              },
+              xAxis: {
+                // 一页图里最大显示的横坐标
+                max: 1200,
+                min: 0
+              },
+              yAxis: {
+                title: {
+                  text: '值'
+                }
+              },
+              credits: {
+                enabled: false
+              },
+              // 设置滚动条
+              scrollbar: {
+                enabled: true
+              },
+              series: [{
+                // data: ret.data.data,
+                data: ret.body.split('\n').map(Number), // convert string array to number array
+                name: '测量数据'
+              }]
+            })
+          }).catch(err => {
+            console.log(err)
+            this.$store.commit([SET_TIP], {
+              message: err || 'Error!',
+              actionHandler: function (event) { },
+              timeout: 2000,
+              actionText: 'Undo'
+            })
           })
-        }).catch(err => {
-          console.log(err)
-          this.$store.commit([SET_TIP], {
-            message: err || 'Error!',
-            actionHandler: function (event) {},
-            timeout: 2000,
-            actionText: 'Undo'
-          })
-        })
       }
     }
   }
+
 </script>
 
 <style scoped>
-.router-link-active {
-  color: #fff;
-  background: #00ACC1;
-}
-.router-link-active > a {
-  color: #fff;
-}
-a {
-  text-decoration: none;
-  color: #00ACC1;
-}
-.keeper-title {
-  padding-left: 15px;
-  border-left: 5px solid #00ACC1;
-  color: #00ACC1;
-  font-weight: 500;
-}
+  .router-link-active {
+    color: #fff;
+    background: #00ACC1;
+  }
+
+  .router-link-active>a {
+    color: #fff;
+  }
+
+  a {
+    text-decoration: none;
+    color: #00ACC1;
+  }
+
+  .keeper-title {
+    padding-left: 15px;
+    border-left: 5px solid #00ACC1;
+    color: #00ACC1;
+    font-weight: 500;
+  }
 </style>
