@@ -17,9 +17,7 @@
           <hr>
           <ul class="mdl-list">
             <li @click="drawECG(ecg)" v-for="ecg in ECGs" class="mdl-list__item">
-              <a href="is-active">
-                {{ ecg }}
-              </a>
+              {{ ecg.split('_')[2] }}
             </li>
             <!--<li class="mdl-list__item">
               <a href="is-active">
