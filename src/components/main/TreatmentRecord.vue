@@ -157,7 +157,7 @@
         currentRecord: null,
         followups: null,
         headUrl: this.$store.state.patient.currentPatient ? this.$store.state.patient.currentPatient.get('headUrl') : '/static/images/user.jpg',
-        patientUsername: this.$store.state.patient.currentPatient ? this.$store.state.patient.currentPatient.get('username') : '请先登录',
+        patientUsername: this.$store.state.patient.currentPatient ? this.$store.state.patient.currentPatient.get('username') : '请先搜索病人',
         age: this.$store.state.patient.currentPatient ? this.$store.state.patient.currentPatient.get('age') : '',
         sex: this.$store.state.patient.currentPatient ? (this.$store.state.patient.currentPatient.get('sex') === 0 ? '男' : '女') : '',
         mobilePhoneNumber: this.$store.state.patient.currentPatient ? this.$store.state.patient.currentPatient.get('mobilePhoneNumber') : ''
@@ -166,11 +166,11 @@
     methods: {
       getDetail (record) {
         this.currentRecord = record
-        this.headUrl = record.get('patient').get('headUrl')
-        this.patientUsername = record.get('patient').get('username')
-        this.age = record.get('patient').get('age')
-        this.sex = record.get('patient').get('sex')
-        this.mobilePhoneNumber = record.get('patient').get('mobilePhoneNumber')
+        // this.headUrl = record.get('patient').get('headUrl')
+        // this.patientUsername = record.get('patient').get('username')
+        // this.age = record.get('patient').get('age')
+        // this.sex = record.get('patient').get('sex')
+        // this.mobilePhoneNumber = record.get('patient').get('mobilePhoneNumber')
 
         // 查询诊后随访记录
         let Followup = Bmob.Object.extend('TreatmentFollowup')

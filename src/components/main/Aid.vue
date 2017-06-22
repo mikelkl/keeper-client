@@ -180,7 +180,7 @@
     data () {
       return {
         headUrl: this.$store.state.patient.currentPatient ? this.$store.state.patient.currentPatient.get('headUrl') : '/static/images/user.jpg',
-        patientUsername: this.$store.state.patient.currentPatient ? this.$store.state.patient.currentPatient.get('username') : '请先登录',
+        patientUsername: this.$store.state.patient.currentPatient ? this.$store.state.patient.currentPatient.get('username') : '请先搜索病人',
         age: this.$store.state.patient.currentPatient ? this.$store.state.patient.currentPatient.get('age') : '',
         sex: this.$store.state.patient.currentPatient ? (this.$store.state.patient.currentPatient.get('sex') === 0 ? '男' : '女') : '',
         mobilePhoneNumber: this.$store.state.patient.currentPatient ? this.$store.state.patient.currentPatient.get('mobilePhoneNumber') : ''
