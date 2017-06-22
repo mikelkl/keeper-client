@@ -10,7 +10,7 @@
         <div slot="supporting-text" class="mdl-card__supporting-text mdl-color-text--blue-grey-50">
           <h3>就诊记录</h3>
           <ul class="mdl-list mdl-color-text--blue-grey-50">
-            <li @click="getDetail(record)" v-for="record in treatmentRecords" class="mdl-list__item mdl-list__item--three-line mdl-color-text--blue-grey-50 keeper-list__item_font">
+            <li @click="getDetail(record)" v-for="record in $store.state.patient.treatmentRecords" class="mdl-list__item mdl-list__item--three-line mdl-color-text--blue-grey-50 keeper-list__item_font">
               <span>
                 <span><b>患者：{{ record.get('patient').get('username') }}</b></span>
               <span style="display:block;">

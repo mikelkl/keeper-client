@@ -19,31 +19,6 @@
             <li @click="drawECG(ecg)" v-for="ecg in ECGs" class="mdl-list__item">
               {{ ecg.split('_')[2] }}
             </li>
-            <!--<li class="mdl-list__item">
-              <a href="is-active">
-                2016/10/16&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;15:02&nbsp;>
-                </a>
-            </li>
-            <li class="mdl-list__item">
-              <a href="is-active">
-                2016/10/16&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;15:14&nbsp;>
-                </a>
-            </li>
-            <li class="mdl-list__item">
-              <a href="is-active">
-                2016/10/16&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;15:27&nbsp;>
-                </a>
-            </li>
-            <li class="mdl-list__item">
-              <a href="is-active">
-                2016/10/16&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;15:33&nbsp;>
-                </a>
-            </li>
-            <li class="mdl-list__item">
-              <a href="is-active">
-                2016/10/16&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;15:41&nbsp;>
-                </a>
-            </li>-->
           </ul>
         </div>
         <div id="container" class="show-chart mdl-cell mdl-cell--9-col"></div>
