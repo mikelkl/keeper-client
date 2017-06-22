@@ -94,7 +94,28 @@
               // Do stuff
               if (user.get('Role') === 1) {
                 that.$store.commit(types.SET_CURRENT_PATIENT, user)
-                that.$router.push('/ecg')
+
+                let TreatmentRecord = Bmob.Object.extend('TreatmentBean')
+
+                let query = new Bmob.Query(TreatmentRecord)
+                query.equalTo('patient', user)
+                query.include('patient')
+                // query.include('doctor')
+
+                query.find({
+                  success: function (results) {
+                    next(vm => {
+                      console.log('共查询到 ' + results.length + ' 条记录.')
+                      // vm.treatmentRecords = results
+                      that.$store.commit(types.SET_TREATMENT_RECORDS, results)
+                    })
+                  },
+                  error: function (error) {
+                    console.log(error.message)
+                  }
+                })
+
+                that.$router.push('/treatment-record')
               } else {
                 that.$store.commit(types.SET_TIP, {
                   message: '只支持搜索病人!',

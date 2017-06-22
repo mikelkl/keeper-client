@@ -3,6 +3,7 @@ export const SET_BASE_INFO = 'SET_BASE_INFO'
 
 // patient
 export const SET_CURRENT_PATIENT = 'SET_CURRENT_PATIENT'
+export const SET_TREATMENT_RECORDS = 'SET_TREATMENT_RECORDS'
 
 // followup info
 export const SET_FOLLOWUP = 'SET_FOLLOWUP'

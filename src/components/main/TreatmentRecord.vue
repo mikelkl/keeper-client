@@ -153,7 +153,7 @@
     },
     data () {
       return {
-        treatmentRecords: null,
+        treatmentRecords: this.$store.state.patient.treatmentRecords,
         currentRecord: null,
         followups: null,
         headUrl: this.$store.state.patient.currentPatient ? this.$store.state.patient.currentPatient.get('headUrl') : '/static/images/user.jpg',
@@ -192,30 +192,30 @@
         })
       }
     },
-    beforeRouteEnter (to, from, next) {
-      // 在渲染该组件的对应路由被 confirm 前调用
-      // 不！能！获取组件实例 `this`
-      // 因为当钩子执行前，组件实例还没被创建
-      let TreatmentRecord = Bmob.Object.extend('TreatmentBean')
+    // beforeRouteEnter (to, from, next) {
+    //   // 在渲染该组件的对应路由被 confirm 前调用
+    //   // 不！能！获取组件实例 `this`
+    //   // 因为当钩子执行前，组件实例还没被创建
+    //   let TreatmentRecord = Bmob.Object.extend('TreatmentBean')
 
-      let query = new Bmob.Query(TreatmentRecord)
-      query.equalTo('doctor', Bmob.User.current())
-      query.include('patient')
-      query.include('doctor')
+    //   let query = new Bmob.Query(TreatmentRecord)
+    //   query.equalTo('doctor', Bmob.User.current())
+    //   query.include('patient')
+    //   query.include('doctor')
 
-      query.find({
-        success: function (results) {
-          next(vm => {
-            console.log('共查询到 ' + results.length + ' 条记录.')
-            vm.treatmentRecords = results
-            // vm.getDetail(results[0])
-          })
-        },
-        error: function (error) {
-          console.log(error.message)
-        }
-      })
-    },
+    //   query.find({
+    //     success: function (results) {
+    //       next(vm => {
+    //         console.log('共查询到 ' + results.length + ' 条记录.')
+    //         vm.treatmentRecords = results
+    //         // vm.getDetail(results[0])
+    //       })
+    //     },
+    //     error: function (error) {
+    //       console.log(error.message)
+    //     }
+    //   })
+    // },
     beforeRouteLeave (to, from, next) {
     // 导航离开该组件的对应路由时调用
     // 可以访问组件实例 `this`
